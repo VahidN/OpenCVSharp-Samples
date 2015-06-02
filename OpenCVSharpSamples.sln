@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8E7040
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCVSharpSample02", "OpenCVSharpSample02\OpenCVSharpSample02.csproj", "{557707A4-898E-4DC3-AEC2-443D0622B4A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,14 @@ Global
 		{DB0A75DB-08B4-4A50-9D8C-49FFD0DCA332}.Release|x64.Build.0 = Release|x64
 		{DB0A75DB-08B4-4A50-9D8C-49FFD0DCA332}.Release|x86.ActiveCfg = Release|x86
 		{DB0A75DB-08B4-4A50-9D8C-49FFD0DCA332}.Release|x86.Build.0 = Release|x86
+		{557707A4-898E-4DC3-AEC2-443D0622B4A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{557707A4-898E-4DC3-AEC2-443D0622B4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{557707A4-898E-4DC3-AEC2-443D0622B4A9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{557707A4-898E-4DC3-AEC2-443D0622B4A9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{557707A4-898E-4DC3-AEC2-443D0622B4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{557707A4-898E-4DC3-AEC2-443D0622B4A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{557707A4-898E-4DC3-AEC2-443D0622B4A9}.Release|x64.ActiveCfg = Release|Any CPU
+		{557707A4-898E-4DC3-AEC2-443D0622B4A9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
