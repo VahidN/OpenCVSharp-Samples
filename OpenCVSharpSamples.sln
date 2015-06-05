@@ -24,6 +24,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCVSharpSample03", "Open
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCVSharpSample04", "OpenCVSharpSample04\OpenCVSharpSample04.csproj", "{2E4A54ED-4E46-4182-8D96-E01E2D24C016}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCVSharpSample04WinForms", "OpenCVSharpSample04WinForms\OpenCVSharpSample04WinForms.csproj", "{E1B29023-F1DA-469A-A422-EDFBE8821690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCVSharpSample05Wpf", "OpenCVSharpSample05Wpf\OpenCVSharpSample05Wpf.csproj", "{120D051F-868F-4382-994B-8BF53F3656B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +74,22 @@ Global
 		{2E4A54ED-4E46-4182-8D96-E01E2D24C016}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E4A54ED-4E46-4182-8D96-E01E2D24C016}.Release|x64.ActiveCfg = Release|Any CPU
 		{2E4A54ED-4E46-4182-8D96-E01E2D24C016}.Release|x86.ActiveCfg = Release|Any CPU
+		{E1B29023-F1DA-469A-A422-EDFBE8821690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B29023-F1DA-469A-A422-EDFBE8821690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B29023-F1DA-469A-A422-EDFBE8821690}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E1B29023-F1DA-469A-A422-EDFBE8821690}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E1B29023-F1DA-469A-A422-EDFBE8821690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B29023-F1DA-469A-A422-EDFBE8821690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1B29023-F1DA-469A-A422-EDFBE8821690}.Release|x64.ActiveCfg = Release|Any CPU
+		{E1B29023-F1DA-469A-A422-EDFBE8821690}.Release|x86.ActiveCfg = Release|Any CPU
+		{120D051F-868F-4382-994B-8BF53F3656B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120D051F-868F-4382-994B-8BF53F3656B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120D051F-868F-4382-994B-8BF53F3656B8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{120D051F-868F-4382-994B-8BF53F3656B8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{120D051F-868F-4382-994B-8BF53F3656B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120D051F-868F-4382-994B-8BF53F3656B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120D051F-868F-4382-994B-8BF53F3656B8}.Release|x64.ActiveCfg = Release|Any CPU
+		{120D051F-868F-4382-994B-8BF53F3656B8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
