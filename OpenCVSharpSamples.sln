@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCVSharpSample12", "Open
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCVSharpSample13", "OpenCVSharpSample13\OpenCVSharpSample13.csproj", "{634FE3BA-B5AE-4431-AB01-72A82FA39A3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCVSharpSample14", "OpenCVSharpSample14\OpenCVSharpSample14.csproj", "{7317B452-6EEF-405A-9804-2D91253A1EBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -170,6 +172,14 @@ Global
 		{634FE3BA-B5AE-4431-AB01-72A82FA39A3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{634FE3BA-B5AE-4431-AB01-72A82FA39A3D}.Release|x64.ActiveCfg = Release|Any CPU
 		{634FE3BA-B5AE-4431-AB01-72A82FA39A3D}.Release|x86.ActiveCfg = Release|Any CPU
+		{7317B452-6EEF-405A-9804-2D91253A1EBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7317B452-6EEF-405A-9804-2D91253A1EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7317B452-6EEF-405A-9804-2D91253A1EBD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7317B452-6EEF-405A-9804-2D91253A1EBD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7317B452-6EEF-405A-9804-2D91253A1EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7317B452-6EEF-405A-9804-2D91253A1EBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7317B452-6EEF-405A-9804-2D91253A1EBD}.Release|x64.ActiveCfg = Release|Any CPU
+		{7317B452-6EEF-405A-9804-2D91253A1EBD}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
