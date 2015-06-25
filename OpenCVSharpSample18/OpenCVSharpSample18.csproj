@@ -1,0 +1,1399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CCBC6846-FC99-4F8D-9903-CC418644F7B4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenCVSharpSample18</RootNamespace>
+    <AssemblyName>OpenCVSharpSample18</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp-AnyCPU.2.4.10.20150320\lib\net40\OpenCvSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp-AnyCPU.2.4.10.20150320\lib\net40\OpenCvSharp.Blob.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.CPlusPlus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp-AnyCPU.2.4.10.20150320\lib\net40\OpenCvSharp.CPlusPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp-AnyCPU.2.4.10.20150320\lib\net40\OpenCvSharp.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OpenCvSharp.UserInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp-AnyCPU.2.4.10.20150320\lib\net40\OpenCvSharp.UserInterface.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImageInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleOCR.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HandWritingNumbers\0\000.pbm" />
+    <None Include="HandWritingNumbers\0\001.pbm" />
+    <None Include="HandWritingNumbers\0\002.pbm" />
+    <None Include="HandWritingNumbers\0\003.pbm" />
+    <None Include="HandWritingNumbers\0\004.pbm" />
+    <None Include="HandWritingNumbers\0\005.pbm" />
+    <None Include="HandWritingNumbers\0\006.pbm" />
+    <None Include="HandWritingNumbers\0\007.pbm" />
+    <None Include="HandWritingNumbers\0\008.pbm" />
+    <None Include="HandWritingNumbers\0\009.pbm" />
+    <None Include="HandWritingNumbers\0\010.pbm" />
+    <None Include="HandWritingNumbers\0\011.pbm" />
+    <None Include="HandWritingNumbers\0\012.pbm" />
+    <None Include="HandWritingNumbers\0\013.pbm" />
+    <None Include="HandWritingNumbers\0\014.pbm" />
+    <None Include="HandWritingNumbers\0\015.pbm" />
+    <None Include="HandWritingNumbers\0\016.pbm" />
+    <None Include="HandWritingNumbers\0\017.pbm" />
+    <None Include="HandWritingNumbers\0\018.pbm" />
+    <None Include="HandWritingNumbers\0\019.pbm" />
+    <None Include="HandWritingNumbers\0\020.pbm" />
+    <None Include="HandWritingNumbers\0\021.pbm" />
+    <None Include="HandWritingNumbers\0\022.pbm" />
+    <None Include="HandWritingNumbers\0\023.pbm" />
+    <None Include="HandWritingNumbers\0\024.pbm" />
+    <None Include="HandWritingNumbers\0\025.pbm" />
+    <None Include="HandWritingNumbers\0\026.pbm" />
+    <None Include="HandWritingNumbers\0\027.pbm" />
+    <None Include="HandWritingNumbers\0\028.pbm" />
+    <None Include="HandWritingNumbers\0\029.pbm" />
+    <None Include="HandWritingNumbers\0\030.pbm" />
+    <None Include="HandWritingNumbers\0\031.pbm" />
+    <None Include="HandWritingNumbers\0\032.pbm" />
+    <None Include="HandWritingNumbers\0\033.pbm" />
+    <None Include="HandWritingNumbers\0\034.pbm" />
+    <None Include="HandWritingNumbers\0\035.pbm" />
+    <None Include="HandWritingNumbers\0\036.pbm" />
+    <None Include="HandWritingNumbers\0\037.pbm" />
+    <None Include="HandWritingNumbers\0\038.pbm" />
+    <None Include="HandWritingNumbers\0\039.pbm" />
+    <None Include="HandWritingNumbers\0\040.pbm" />
+    <None Include="HandWritingNumbers\0\041.pbm" />
+    <None Include="HandWritingNumbers\0\042.pbm" />
+    <None Include="HandWritingNumbers\0\043.pbm" />
+    <None Include="HandWritingNumbers\0\044.pbm" />
+    <None Include="HandWritingNumbers\0\045.pbm" />
+    <None Include="HandWritingNumbers\0\046.pbm" />
+    <None Include="HandWritingNumbers\0\047.pbm" />
+    <None Include="HandWritingNumbers\0\048.pbm" />
+    <None Include="HandWritingNumbers\0\049.pbm" />
+    <None Include="HandWritingNumbers\0\050.pbm" />
+    <None Include="HandWritingNumbers\0\051.pbm" />
+    <None Include="HandWritingNumbers\0\052.pbm" />
+    <None Include="HandWritingNumbers\0\053.pbm" />
+    <None Include="HandWritingNumbers\0\054.pbm" />
+    <None Include="HandWritingNumbers\0\055.pbm" />
+    <None Include="HandWritingNumbers\0\056.pbm" />
+    <None Include="HandWritingNumbers\0\057.pbm" />
+    <None Include="HandWritingNumbers\0\058.pbm" />
+    <None Include="HandWritingNumbers\0\059.pbm" />
+    <None Include="HandWritingNumbers\0\060.pbm" />
+    <None Include="HandWritingNumbers\0\061.pbm" />
+    <None Include="HandWritingNumbers\0\062.pbm" />
+    <None Include="HandWritingNumbers\0\063.pbm" />
+    <None Include="HandWritingNumbers\0\064.pbm" />
+    <None Include="HandWritingNumbers\0\065.pbm" />
+    <None Include="HandWritingNumbers\0\066.pbm" />
+    <None Include="HandWritingNumbers\0\067.pbm" />
+    <None Include="HandWritingNumbers\0\068.pbm" />
+    <None Include="HandWritingNumbers\0\069.pbm" />
+    <None Include="HandWritingNumbers\0\070.pbm" />
+    <None Include="HandWritingNumbers\0\071.pbm" />
+    <None Include="HandWritingNumbers\0\072.pbm" />
+    <None Include="HandWritingNumbers\0\073.pbm" />
+    <None Include="HandWritingNumbers\0\074.pbm" />
+    <None Include="HandWritingNumbers\0\075.pbm" />
+    <None Include="HandWritingNumbers\0\076.pbm" />
+    <None Include="HandWritingNumbers\0\077.pbm" />
+    <None Include="HandWritingNumbers\0\078.pbm" />
+    <None Include="HandWritingNumbers\0\079.pbm" />
+    <None Include="HandWritingNumbers\0\080.pbm" />
+    <None Include="HandWritingNumbers\0\081.pbm" />
+    <None Include="HandWritingNumbers\0\082.pbm" />
+    <None Include="HandWritingNumbers\0\083.pbm" />
+    <None Include="HandWritingNumbers\0\084.pbm" />
+    <None Include="HandWritingNumbers\0\085.pbm" />
+    <None Include="HandWritingNumbers\0\086.pbm" />
+    <None Include="HandWritingNumbers\0\087.pbm" />
+    <None Include="HandWritingNumbers\0\088.pbm" />
+    <None Include="HandWritingNumbers\0\089.pbm" />
+    <None Include="HandWritingNumbers\0\090.pbm" />
+    <None Include="HandWritingNumbers\0\091.pbm" />
+    <None Include="HandWritingNumbers\0\092.pbm" />
+    <None Include="HandWritingNumbers\0\093.pbm" />
+    <None Include="HandWritingNumbers\0\094.pbm" />
+    <None Include="HandWritingNumbers\0\095.pbm" />
+    <None Include="HandWritingNumbers\0\096.pbm" />
+    <None Include="HandWritingNumbers\0\097.pbm" />
+    <None Include="HandWritingNumbers\0\098.pbm" />
+    <None Include="HandWritingNumbers\0\099.pbm" />
+    <None Include="HandWritingNumbers\1\100.pbm" />
+    <None Include="HandWritingNumbers\1\101.pbm" />
+    <None Include="HandWritingNumbers\1\102.pbm" />
+    <None Include="HandWritingNumbers\1\103.pbm" />
+    <None Include="HandWritingNumbers\1\104.pbm" />
+    <None Include="HandWritingNumbers\1\105.pbm" />
+    <None Include="HandWritingNumbers\1\106.pbm" />
+    <None Include="HandWritingNumbers\1\107.pbm" />
+    <None Include="HandWritingNumbers\1\108.pbm" />
+    <None Include="HandWritingNumbers\1\109.pbm" />
+    <None Include="HandWritingNumbers\1\110.pbm" />
+    <None Include="HandWritingNumbers\1\111.pbm" />
+    <None Include="HandWritingNumbers\1\112.pbm" />
+    <None Include="HandWritingNumbers\1\113.pbm" />
+    <None Include="HandWritingNumbers\1\114.pbm" />
+    <None Include="HandWritingNumbers\1\115.pbm" />
+    <None Include="HandWritingNumbers\1\116.pbm" />
+    <None Include="HandWritingNumbers\1\117.pbm" />
+    <None Include="HandWritingNumbers\1\118.pbm" />
+    <None Include="HandWritingNumbers\1\119.pbm" />
+    <None Include="HandWritingNumbers\1\120.pbm" />
+    <None Include="HandWritingNumbers\1\121.pbm" />
+    <None Include="HandWritingNumbers\1\122.pbm" />
+    <None Include="HandWritingNumbers\1\123.pbm" />
+    <None Include="HandWritingNumbers\1\124.pbm" />
+    <None Include="HandWritingNumbers\1\125.pbm" />
+    <None Include="HandWritingNumbers\1\126.pbm" />
+    <None Include="HandWritingNumbers\1\127.pbm" />
+    <None Include="HandWritingNumbers\1\128.pbm" />
+    <None Include="HandWritingNumbers\1\129.pbm" />
+    <None Include="HandWritingNumbers\1\130.pbm" />
+    <None Include="HandWritingNumbers\1\131.pbm" />
+    <None Include="HandWritingNumbers\1\132.pbm" />
+    <None Include="HandWritingNumbers\1\133.pbm" />
+    <None Include="HandWritingNumbers\1\134.pbm" />
+    <None Include="HandWritingNumbers\1\135.pbm" />
+    <None Include="HandWritingNumbers\1\136.pbm" />
+    <None Include="HandWritingNumbers\1\137.pbm" />
+    <None Include="HandWritingNumbers\1\138.pbm" />
+    <None Include="HandWritingNumbers\1\139.pbm" />
+    <None Include="HandWritingNumbers\1\140.pbm" />
+    <None Include="HandWritingNumbers\1\141.pbm" />
+    <None Include="HandWritingNumbers\1\142.pbm" />
+    <None Include="HandWritingNumbers\1\143.pbm" />
+    <None Include="HandWritingNumbers\1\144.pbm" />
+    <None Include="HandWritingNumbers\1\145.pbm" />
+    <None Include="HandWritingNumbers\1\146.pbm" />
+    <None Include="HandWritingNumbers\1\147.pbm" />
+    <None Include="HandWritingNumbers\1\148.pbm" />
+    <None Include="HandWritingNumbers\1\149.pbm" />
+    <None Include="HandWritingNumbers\1\150.pbm" />
+    <None Include="HandWritingNumbers\1\151.pbm" />
+    <None Include="HandWritingNumbers\1\152.pbm" />
+    <None Include="HandWritingNumbers\1\153.pbm" />
+    <None Include="HandWritingNumbers\1\154.pbm" />
+    <None Include="HandWritingNumbers\1\155.pbm" />
+    <None Include="HandWritingNumbers\1\156.pbm" />
+    <None Include="HandWritingNumbers\1\157.pbm" />
+    <None Include="HandWritingNumbers\1\158.pbm" />
+    <None Include="HandWritingNumbers\1\159.pbm" />
+    <None Include="HandWritingNumbers\1\160.pbm" />
+    <None Include="HandWritingNumbers\1\161.pbm" />
+    <None Include="HandWritingNumbers\1\162.pbm" />
+    <None Include="HandWritingNumbers\1\163.pbm" />
+    <None Include="HandWritingNumbers\1\164.pbm" />
+    <None Include="HandWritingNumbers\1\165.pbm" />
+    <None Include="HandWritingNumbers\1\166.pbm" />
+    <None Include="HandWritingNumbers\1\167.pbm" />
+    <None Include="HandWritingNumbers\1\168.pbm" />
+    <None Include="HandWritingNumbers\1\169.pbm" />
+    <None Include="HandWritingNumbers\1\170.pbm" />
+    <None Include="HandWritingNumbers\1\171.pbm" />
+    <None Include="HandWritingNumbers\1\172.pbm" />
+    <None Include="HandWritingNumbers\1\173.pbm" />
+    <None Include="HandWritingNumbers\1\174.pbm" />
+    <None Include="HandWritingNumbers\1\175.pbm" />
+    <None Include="HandWritingNumbers\1\176.pbm" />
+    <None Include="HandWritingNumbers\1\177.pbm" />
+    <None Include="HandWritingNumbers\1\178.pbm" />
+    <None Include="HandWritingNumbers\1\179.pbm" />
+    <None Include="HandWritingNumbers\1\180.pbm" />
+    <None Include="HandWritingNumbers\1\181.pbm" />
+    <None Include="HandWritingNumbers\1\182.pbm" />
+    <None Include="HandWritingNumbers\1\183.pbm" />
+    <None Include="HandWritingNumbers\1\184.pbm" />
+    <None Include="HandWritingNumbers\1\185.pbm" />
+    <None Include="HandWritingNumbers\1\186.pbm" />
+    <None Include="HandWritingNumbers\1\187.pbm" />
+    <None Include="HandWritingNumbers\1\188.pbm" />
+    <None Include="HandWritingNumbers\1\189.pbm" />
+    <None Include="HandWritingNumbers\1\190.pbm" />
+    <None Include="HandWritingNumbers\1\191.pbm" />
+    <None Include="HandWritingNumbers\1\192.pbm" />
+    <None Include="HandWritingNumbers\1\193.pbm" />
+    <None Include="HandWritingNumbers\1\194.pbm" />
+    <None Include="HandWritingNumbers\1\195.pbm" />
+    <None Include="HandWritingNumbers\1\196.pbm" />
+    <None Include="HandWritingNumbers\1\197.pbm" />
+    <None Include="HandWritingNumbers\1\198.pbm" />
+    <None Include="HandWritingNumbers\1\199.pbm" />
+    <None Include="HandWritingNumbers\2\200.pbm" />
+    <None Include="HandWritingNumbers\2\201.pbm" />
+    <None Include="HandWritingNumbers\2\202.pbm" />
+    <None Include="HandWritingNumbers\2\203.pbm" />
+    <None Include="HandWritingNumbers\2\204.pbm" />
+    <None Include="HandWritingNumbers\2\205.pbm" />
+    <None Include="HandWritingNumbers\2\206.pbm" />
+    <None Include="HandWritingNumbers\2\207.pbm" />
+    <None Include="HandWritingNumbers\2\208.pbm" />
+    <None Include="HandWritingNumbers\2\209.pbm" />
+    <None Include="HandWritingNumbers\2\210.pbm" />
+    <None Include="HandWritingNumbers\2\211.pbm" />
+    <None Include="HandWritingNumbers\2\212.pbm" />
+    <None Include="HandWritingNumbers\2\213.pbm" />
+    <None Include="HandWritingNumbers\2\214.pbm" />
+    <None Include="HandWritingNumbers\2\215.pbm" />
+    <None Include="HandWritingNumbers\2\216.pbm" />
+    <None Include="HandWritingNumbers\2\217.pbm" />
+    <None Include="HandWritingNumbers\2\218.pbm" />
+    <None Include="HandWritingNumbers\2\219.pbm" />
+    <None Include="HandWritingNumbers\2\220.pbm" />
+    <None Include="HandWritingNumbers\2\221.pbm" />
+    <None Include="HandWritingNumbers\2\222.pbm" />
+    <None Include="HandWritingNumbers\2\223.pbm" />
+    <None Include="HandWritingNumbers\2\224.pbm" />
+    <None Include="HandWritingNumbers\2\225.pbm" />
+    <None Include="HandWritingNumbers\2\226.pbm" />
+    <None Include="HandWritingNumbers\2\227.pbm" />
+    <None Include="HandWritingNumbers\2\228.pbm" />
+    <None Include="HandWritingNumbers\2\229.pbm" />
+    <None Include="HandWritingNumbers\2\230.pbm" />
+    <None Include="HandWritingNumbers\2\231.pbm" />
+    <None Include="HandWritingNumbers\2\232.pbm" />
+    <None Include="HandWritingNumbers\2\233.pbm" />
+    <None Include="HandWritingNumbers\2\234.pbm" />
+    <None Include="HandWritingNumbers\2\235.pbm" />
+    <None Include="HandWritingNumbers\2\236.pbm" />
+    <None Include="HandWritingNumbers\2\237.pbm" />
+    <None Include="HandWritingNumbers\2\238.pbm" />
+    <None Include="HandWritingNumbers\2\239.pbm" />
+    <None Include="HandWritingNumbers\2\240.pbm" />
+    <None Include="HandWritingNumbers\2\241.pbm" />
+    <None Include="HandWritingNumbers\2\242.pbm" />
+    <None Include="HandWritingNumbers\2\243.pbm" />
+    <None Include="HandWritingNumbers\2\244.pbm" />
+    <None Include="HandWritingNumbers\2\245.pbm" />
+    <None Include="HandWritingNumbers\2\246.pbm" />
+    <None Include="HandWritingNumbers\2\247.pbm" />
+    <None Include="HandWritingNumbers\2\248.pbm" />
+    <None Include="HandWritingNumbers\2\249.pbm" />
+    <None Include="HandWritingNumbers\2\250.pbm" />
+    <None Include="HandWritingNumbers\2\251.pbm" />
+    <None Include="HandWritingNumbers\2\252.pbm" />
+    <None Include="HandWritingNumbers\2\253.pbm" />
+    <None Include="HandWritingNumbers\2\254.pbm" />
+    <None Include="HandWritingNumbers\2\255.pbm" />
+    <None Include="HandWritingNumbers\2\256.pbm" />
+    <None Include="HandWritingNumbers\2\257.pbm" />
+    <None Include="HandWritingNumbers\2\258.pbm" />
+    <None Include="HandWritingNumbers\2\259.pbm" />
+    <None Include="HandWritingNumbers\2\260.pbm" />
+    <None Include="HandWritingNumbers\2\261.pbm" />
+    <None Include="HandWritingNumbers\2\262.pbm" />
+    <None Include="HandWritingNumbers\2\263.pbm" />
+    <None Include="HandWritingNumbers\2\264.pbm" />
+    <None Include="HandWritingNumbers\2\265.pbm" />
+    <None Include="HandWritingNumbers\2\266.pbm" />
+    <None Include="HandWritingNumbers\2\267.pbm" />
+    <None Include="HandWritingNumbers\2\268.pbm" />
+    <None Include="HandWritingNumbers\2\269.pbm" />
+    <None Include="HandWritingNumbers\2\270.pbm" />
+    <None Include="HandWritingNumbers\2\271.pbm" />
+    <None Include="HandWritingNumbers\2\272.pbm" />
+    <None Include="HandWritingNumbers\2\273.pbm" />
+    <None Include="HandWritingNumbers\2\274.pbm" />
+    <None Include="HandWritingNumbers\2\275.pbm" />
+    <None Include="HandWritingNumbers\2\276.pbm" />
+    <None Include="HandWritingNumbers\2\277.pbm" />
+    <None Include="HandWritingNumbers\2\278.pbm" />
+    <None Include="HandWritingNumbers\2\279.pbm" />
+    <None Include="HandWritingNumbers\2\280.pbm" />
+    <None Include="HandWritingNumbers\2\281.pbm" />
+    <None Include="HandWritingNumbers\2\282.pbm" />
+    <None Include="HandWritingNumbers\2\283.pbm" />
+    <None Include="HandWritingNumbers\2\284.pbm" />
+    <None Include="HandWritingNumbers\2\285.pbm" />
+    <None Include="HandWritingNumbers\2\286.pbm" />
+    <None Include="HandWritingNumbers\2\287.pbm" />
+    <None Include="HandWritingNumbers\2\288.pbm" />
+    <None Include="HandWritingNumbers\2\289.pbm" />
+    <None Include="HandWritingNumbers\2\290.pbm" />
+    <None Include="HandWritingNumbers\2\291.pbm" />
+    <None Include="HandWritingNumbers\2\292.pbm" />
+    <None Include="HandWritingNumbers\2\293.pbm" />
+    <None Include="HandWritingNumbers\2\294.pbm" />
+    <None Include="HandWritingNumbers\2\295.pbm" />
+    <None Include="HandWritingNumbers\2\296.pbm" />
+    <None Include="HandWritingNumbers\2\297.pbm" />
+    <None Include="HandWritingNumbers\2\298.pbm" />
+    <None Include="HandWritingNumbers\2\299.pbm" />
+    <None Include="HandWritingNumbers\3\300.pbm" />
+    <None Include="HandWritingNumbers\3\301.pbm" />
+    <None Include="HandWritingNumbers\3\302.pbm" />
+    <None Include="HandWritingNumbers\3\303.pbm" />
+    <None Include="HandWritingNumbers\3\304.pbm" />
+    <None Include="HandWritingNumbers\3\305.pbm" />
+    <None Include="HandWritingNumbers\3\306.pbm" />
+    <None Include="HandWritingNumbers\3\307.pbm" />
+    <None Include="HandWritingNumbers\3\308.pbm" />
+    <None Include="HandWritingNumbers\3\309.pbm" />
+    <None Include="HandWritingNumbers\3\310.pbm" />
+    <None Include="HandWritingNumbers\3\311.pbm" />
+    <None Include="HandWritingNumbers\3\312.pbm" />
+    <None Include="HandWritingNumbers\3\313.pbm" />
+    <None Include="HandWritingNumbers\3\314.pbm" />
+    <None Include="HandWritingNumbers\3\315.pbm" />
+    <None Include="HandWritingNumbers\3\316.pbm" />
+    <None Include="HandWritingNumbers\3\317.pbm" />
+    <None Include="HandWritingNumbers\3\318.pbm" />
+    <None Include="HandWritingNumbers\3\319.pbm" />
+    <None Include="HandWritingNumbers\3\320.pbm" />
+    <None Include="HandWritingNumbers\3\321.pbm" />
+    <None Include="HandWritingNumbers\3\322.pbm" />
+    <None Include="HandWritingNumbers\3\323.pbm" />
+    <None Include="HandWritingNumbers\3\324.pbm" />
+    <None Include="HandWritingNumbers\3\325.pbm" />
+    <None Include="HandWritingNumbers\3\326.pbm" />
+    <None Include="HandWritingNumbers\3\327.pbm" />
+    <None Include="HandWritingNumbers\3\328.pbm" />
+    <None Include="HandWritingNumbers\3\329.pbm" />
+    <None Include="HandWritingNumbers\3\330.pbm" />
+    <None Include="HandWritingNumbers\3\331.pbm" />
+    <None Include="HandWritingNumbers\3\332.pbm" />
+    <None Include="HandWritingNumbers\3\333.pbm" />
+    <None Include="HandWritingNumbers\3\334.pbm" />
+    <None Include="HandWritingNumbers\3\335.pbm" />
+    <None Include="HandWritingNumbers\3\336.pbm" />
+    <None Include="HandWritingNumbers\3\337.pbm" />
+    <None Include="HandWritingNumbers\3\338.pbm" />
+    <None Include="HandWritingNumbers\3\339.pbm" />
+    <None Include="HandWritingNumbers\3\340.pbm" />
+    <None Include="HandWritingNumbers\3\341.pbm" />
+    <None Include="HandWritingNumbers\3\342.pbm" />
+    <None Include="HandWritingNumbers\3\343.pbm" />
+    <None Include="HandWritingNumbers\3\344.pbm" />
+    <None Include="HandWritingNumbers\3\345.pbm" />
+    <None Include="HandWritingNumbers\3\346.pbm" />
+    <None Include="HandWritingNumbers\3\347.pbm" />
+    <None Include="HandWritingNumbers\3\348.pbm" />
+    <None Include="HandWritingNumbers\3\349.pbm" />
+    <None Include="HandWritingNumbers\3\350.pbm" />
+    <None Include="HandWritingNumbers\3\351.pbm" />
+    <None Include="HandWritingNumbers\3\352.pbm" />
+    <None Include="HandWritingNumbers\3\353.pbm" />
+    <None Include="HandWritingNumbers\3\354.pbm" />
+    <None Include="HandWritingNumbers\3\355.pbm" />
+    <None Include="HandWritingNumbers\3\356.pbm" />
+    <None Include="HandWritingNumbers\3\357.pbm" />
+    <None Include="HandWritingNumbers\3\358.pbm" />
+    <None Include="HandWritingNumbers\3\359.pbm" />
+    <None Include="HandWritingNumbers\3\360.pbm" />
+    <None Include="HandWritingNumbers\3\361.pbm" />
+    <None Include="HandWritingNumbers\3\362.pbm" />
+    <None Include="HandWritingNumbers\3\363.pbm" />
+    <None Include="HandWritingNumbers\3\364.pbm" />
+    <None Include="HandWritingNumbers\3\365.pbm" />
+    <None Include="HandWritingNumbers\3\366.pbm" />
+    <None Include="HandWritingNumbers\3\367.pbm" />
+    <None Include="HandWritingNumbers\3\368.pbm" />
+    <None Include="HandWritingNumbers\3\369.pbm" />
+    <None Include="HandWritingNumbers\3\370.pbm" />
+    <None Include="HandWritingNumbers\3\371.pbm" />
+    <None Include="HandWritingNumbers\3\372.pbm" />
+    <None Include="HandWritingNumbers\3\373.pbm" />
+    <None Include="HandWritingNumbers\3\374.pbm" />
+    <None Include="HandWritingNumbers\3\375.pbm" />
+    <None Include="HandWritingNumbers\3\376.pbm" />
+    <None Include="HandWritingNumbers\3\377.pbm" />
+    <None Include="HandWritingNumbers\3\378.pbm" />
+    <None Include="HandWritingNumbers\3\379.pbm" />
+    <None Include="HandWritingNumbers\3\380.pbm" />
+    <None Include="HandWritingNumbers\3\381.pbm" />
+    <None Include="HandWritingNumbers\3\382.pbm" />
+    <None Include="HandWritingNumbers\3\383.pbm" />
+    <None Include="HandWritingNumbers\3\384.pbm" />
+    <None Include="HandWritingNumbers\3\385.pbm" />
+    <None Include="HandWritingNumbers\3\386.pbm" />
+    <None Include="HandWritingNumbers\3\387.pbm" />
+    <None Include="HandWritingNumbers\3\388.pbm" />
+    <None Include="HandWritingNumbers\3\389.pbm" />
+    <None Include="HandWritingNumbers\3\390.pbm" />
+    <None Include="HandWritingNumbers\3\391.pbm" />
+    <None Include="HandWritingNumbers\3\392.pbm" />
+    <None Include="HandWritingNumbers\3\393.pbm" />
+    <None Include="HandWritingNumbers\3\394.pbm" />
+    <None Include="HandWritingNumbers\3\395.pbm" />
+    <None Include="HandWritingNumbers\3\396.pbm" />
+    <None Include="HandWritingNumbers\3\397.pbm" />
+    <None Include="HandWritingNumbers\3\398.pbm" />
+    <None Include="HandWritingNumbers\3\399.pbm" />
+    <None Include="HandWritingNumbers\4\400.pbm" />
+    <None Include="HandWritingNumbers\4\401.pbm" />
+    <None Include="HandWritingNumbers\4\402.pbm" />
+    <None Include="HandWritingNumbers\4\403.pbm" />
+    <None Include="HandWritingNumbers\4\404.pbm" />
+    <None Include="HandWritingNumbers\4\405.pbm" />
+    <None Include="HandWritingNumbers\4\406.pbm" />
+    <None Include="HandWritingNumbers\4\407.pbm" />
+    <None Include="HandWritingNumbers\4\408.pbm" />
+    <None Include="HandWritingNumbers\4\409.pbm" />
+    <None Include="HandWritingNumbers\4\410.pbm" />
+    <None Include="HandWritingNumbers\4\411.pbm" />
+    <None Include="HandWritingNumbers\4\412.pbm" />
+    <None Include="HandWritingNumbers\4\413.pbm" />
+    <None Include="HandWritingNumbers\4\414.pbm" />
+    <None Include="HandWritingNumbers\4\415.pbm" />
+    <None Include="HandWritingNumbers\4\416.pbm" />
+    <None Include="HandWritingNumbers\4\417.pbm" />
+    <None Include="HandWritingNumbers\4\418.pbm" />
+    <None Include="HandWritingNumbers\4\419.pbm" />
+    <None Include="HandWritingNumbers\4\420.pbm" />
+    <None Include="HandWritingNumbers\4\421.pbm" />
+    <None Include="HandWritingNumbers\4\422.pbm" />
+    <None Include="HandWritingNumbers\4\423.pbm" />
+    <None Include="HandWritingNumbers\4\424.pbm" />
+    <None Include="HandWritingNumbers\4\425.pbm" />
+    <None Include="HandWritingNumbers\4\426.pbm" />
+    <None Include="HandWritingNumbers\4\427.pbm" />
+    <None Include="HandWritingNumbers\4\428.pbm" />
+    <None Include="HandWritingNumbers\4\429.pbm" />
+    <None Include="HandWritingNumbers\4\430.pbm" />
+    <None Include="HandWritingNumbers\4\431.pbm" />
+    <None Include="HandWritingNumbers\4\432.pbm" />
+    <None Include="HandWritingNumbers\4\433.pbm" />
+    <None Include="HandWritingNumbers\4\434.pbm" />
+    <None Include="HandWritingNumbers\4\435.pbm" />
+    <None Include="HandWritingNumbers\4\436.pbm" />
+    <None Include="HandWritingNumbers\4\437.pbm" />
+    <None Include="HandWritingNumbers\4\438.pbm" />
+    <None Include="HandWritingNumbers\4\439.pbm" />
+    <None Include="HandWritingNumbers\4\440.pbm" />
+    <None Include="HandWritingNumbers\4\441.pbm" />
+    <None Include="HandWritingNumbers\4\442.pbm" />
+    <None Include="HandWritingNumbers\4\443.pbm" />
+    <None Include="HandWritingNumbers\4\444.pbm" />
+    <None Include="HandWritingNumbers\4\445.pbm" />
+    <None Include="HandWritingNumbers\4\446.pbm" />
+    <None Include="HandWritingNumbers\4\447.pbm" />
+    <None Include="HandWritingNumbers\4\448.pbm" />
+    <None Include="HandWritingNumbers\4\449.pbm" />
+    <None Include="HandWritingNumbers\4\450.pbm" />
+    <None Include="HandWritingNumbers\4\451.pbm" />
+    <None Include="HandWritingNumbers\4\452.pbm" />
+    <None Include="HandWritingNumbers\4\453.pbm" />
+    <None Include="HandWritingNumbers\4\454.pbm" />
+    <None Include="HandWritingNumbers\4\455.pbm" />
+    <None Include="HandWritingNumbers\4\456.pbm" />
+    <None Include="HandWritingNumbers\4\457.pbm" />
+    <None Include="HandWritingNumbers\4\458.pbm" />
+    <None Include="HandWritingNumbers\4\459.pbm" />
+    <None Include="HandWritingNumbers\4\460.pbm" />
+    <None Include="HandWritingNumbers\4\461.pbm" />
+    <None Include="HandWritingNumbers\4\462.pbm" />
+    <None Include="HandWritingNumbers\4\463.pbm" />
+    <None Include="HandWritingNumbers\4\464.pbm" />
+    <None Include="HandWritingNumbers\4\465.pbm" />
+    <None Include="HandWritingNumbers\4\466.pbm" />
+    <None Include="HandWritingNumbers\4\467.pbm" />
+    <None Include="HandWritingNumbers\4\468.pbm" />
+    <None Include="HandWritingNumbers\4\469.pbm" />
+    <None Include="HandWritingNumbers\4\470.pbm" />
+    <None Include="HandWritingNumbers\4\471.pbm" />
+    <None Include="HandWritingNumbers\4\472.pbm" />
+    <None Include="HandWritingNumbers\4\473.pbm" />
+    <None Include="HandWritingNumbers\4\474.pbm" />
+    <None Include="HandWritingNumbers\4\475.pbm" />
+    <None Include="HandWritingNumbers\4\476.pbm" />
+    <None Include="HandWritingNumbers\4\477.pbm" />
+    <None Include="HandWritingNumbers\4\478.pbm" />
+    <None Include="HandWritingNumbers\4\479.pbm" />
+    <None Include="HandWritingNumbers\4\480.pbm" />
+    <None Include="HandWritingNumbers\4\481.pbm" />
+    <None Include="HandWritingNumbers\4\482.pbm" />
+    <None Include="HandWritingNumbers\4\483.pbm" />
+    <None Include="HandWritingNumbers\4\484.pbm" />
+    <None Include="HandWritingNumbers\4\485.pbm" />
+    <None Include="HandWritingNumbers\4\486.pbm" />
+    <None Include="HandWritingNumbers\4\487.pbm" />
+    <None Include="HandWritingNumbers\4\488.pbm" />
+    <None Include="HandWritingNumbers\4\489.pbm" />
+    <None Include="HandWritingNumbers\4\490.pbm" />
+    <None Include="HandWritingNumbers\4\491.pbm" />
+    <None Include="HandWritingNumbers\4\492.pbm" />
+    <None Include="HandWritingNumbers\4\493.pbm" />
+    <None Include="HandWritingNumbers\4\494.pbm" />
+    <None Include="HandWritingNumbers\4\495.pbm" />
+    <None Include="HandWritingNumbers\4\496.pbm" />
+    <None Include="HandWritingNumbers\4\497.pbm" />
+    <None Include="HandWritingNumbers\4\498.pbm" />
+    <None Include="HandWritingNumbers\4\499.pbm" />
+    <None Include="HandWritingNumbers\5\500.pbm" />
+    <None Include="HandWritingNumbers\5\501.pbm" />
+    <None Include="HandWritingNumbers\5\502.pbm" />
+    <None Include="HandWritingNumbers\5\503.pbm" />
+    <None Include="HandWritingNumbers\5\504.pbm" />
+    <None Include="HandWritingNumbers\5\505.pbm" />
+    <None Include="HandWritingNumbers\5\506.pbm" />
+    <None Include="HandWritingNumbers\5\507.pbm" />
+    <None Include="HandWritingNumbers\5\508.pbm" />
+    <None Include="HandWritingNumbers\5\509.pbm" />
+    <None Include="HandWritingNumbers\5\510.pbm" />
+    <None Include="HandWritingNumbers\5\511.pbm" />
+    <None Include="HandWritingNumbers\5\512.pbm" />
+    <None Include="HandWritingNumbers\5\513.pbm" />
+    <None Include="HandWritingNumbers\5\514.pbm" />
+    <None Include="HandWritingNumbers\5\515.pbm" />
+    <None Include="HandWritingNumbers\5\516.pbm" />
+    <None Include="HandWritingNumbers\5\517.pbm" />
+    <None Include="HandWritingNumbers\5\518.pbm" />
+    <None Include="HandWritingNumbers\5\519.pbm" />
+    <None Include="HandWritingNumbers\5\520.pbm" />
+    <None Include="HandWritingNumbers\5\521.pbm" />
+    <None Include="HandWritingNumbers\5\522.pbm" />
+    <None Include="HandWritingNumbers\5\523.pbm" />
+    <None Include="HandWritingNumbers\5\524.pbm" />
+    <None Include="HandWritingNumbers\5\525.pbm" />
+    <None Include="HandWritingNumbers\5\526.pbm" />
+    <None Include="HandWritingNumbers\5\527.pbm" />
+    <None Include="HandWritingNumbers\5\528.pbm" />
+    <None Include="HandWritingNumbers\5\529.pbm" />
+    <None Include="HandWritingNumbers\5\530.pbm" />
+    <None Include="HandWritingNumbers\5\531.pbm" />
+    <None Include="HandWritingNumbers\5\532.pbm" />
+    <None Include="HandWritingNumbers\5\533.pbm" />
+    <None Include="HandWritingNumbers\5\534.pbm" />
+    <None Include="HandWritingNumbers\5\535.pbm" />
+    <None Include="HandWritingNumbers\5\536.pbm" />
+    <None Include="HandWritingNumbers\5\537.pbm" />
+    <None Include="HandWritingNumbers\5\538.pbm" />
+    <None Include="HandWritingNumbers\5\539.pbm" />
+    <None Include="HandWritingNumbers\5\540.pbm" />
+    <None Include="HandWritingNumbers\5\541.pbm" />
+    <None Include="HandWritingNumbers\5\542.pbm" />
+    <None Include="HandWritingNumbers\5\543.pbm" />
+    <None Include="HandWritingNumbers\5\544.pbm" />
+    <None Include="HandWritingNumbers\5\545.pbm" />
+    <None Include="HandWritingNumbers\5\546.pbm" />
+    <None Include="HandWritingNumbers\5\547.pbm" />
+    <None Include="HandWritingNumbers\5\548.pbm" />
+    <None Include="HandWritingNumbers\5\549.pbm" />
+    <None Include="HandWritingNumbers\5\550.pbm" />
+    <None Include="HandWritingNumbers\5\551.pbm" />
+    <None Include="HandWritingNumbers\5\552.pbm" />
+    <None Include="HandWritingNumbers\5\553.pbm" />
+    <None Include="HandWritingNumbers\5\554.pbm" />
+    <None Include="HandWritingNumbers\5\555.pbm" />
+    <None Include="HandWritingNumbers\5\556.pbm" />
+    <None Include="HandWritingNumbers\5\557.pbm" />
+    <None Include="HandWritingNumbers\5\558.pbm" />
+    <None Include="HandWritingNumbers\5\559.pbm" />
+    <None Include="HandWritingNumbers\5\560.pbm" />
+    <None Include="HandWritingNumbers\5\561.pbm" />
+    <None Include="HandWritingNumbers\5\562.pbm" />
+    <None Include="HandWritingNumbers\5\563.pbm" />
+    <None Include="HandWritingNumbers\5\564.pbm" />
+    <None Include="HandWritingNumbers\5\565.pbm" />
+    <None Include="HandWritingNumbers\5\566.pbm" />
+    <None Include="HandWritingNumbers\5\567.pbm" />
+    <None Include="HandWritingNumbers\5\568.pbm" />
+    <None Include="HandWritingNumbers\5\569.pbm" />
+    <None Include="HandWritingNumbers\5\570.pbm" />
+    <None Include="HandWritingNumbers\5\571.pbm" />
+    <None Include="HandWritingNumbers\5\572.pbm" />
+    <None Include="HandWritingNumbers\5\573.pbm" />
+    <None Include="HandWritingNumbers\5\574.pbm" />
+    <None Include="HandWritingNumbers\5\575.pbm" />
+    <None Include="HandWritingNumbers\5\576.pbm" />
+    <None Include="HandWritingNumbers\5\577.pbm" />
+    <None Include="HandWritingNumbers\5\578.pbm" />
+    <None Include="HandWritingNumbers\5\579.pbm" />
+    <None Include="HandWritingNumbers\5\580.pbm" />
+    <None Include="HandWritingNumbers\5\581.pbm" />
+    <None Include="HandWritingNumbers\5\582.pbm" />
+    <None Include="HandWritingNumbers\5\583.pbm" />
+    <None Include="HandWritingNumbers\5\584.pbm" />
+    <None Include="HandWritingNumbers\5\585.pbm" />
+    <None Include="HandWritingNumbers\5\586.pbm" />
+    <None Include="HandWritingNumbers\5\587.pbm" />
+    <None Include="HandWritingNumbers\5\588.pbm" />
+    <None Include="HandWritingNumbers\5\589.pbm" />
+    <None Include="HandWritingNumbers\5\590.pbm" />
+    <None Include="HandWritingNumbers\5\591.pbm" />
+    <None Include="HandWritingNumbers\5\592.pbm" />
+    <None Include="HandWritingNumbers\5\593.pbm" />
+    <None Include="HandWritingNumbers\5\594.pbm" />
+    <None Include="HandWritingNumbers\5\595.pbm" />
+    <None Include="HandWritingNumbers\5\596.pbm" />
+    <None Include="HandWritingNumbers\5\597.pbm" />
+    <None Include="HandWritingNumbers\5\598.pbm" />
+    <None Include="HandWritingNumbers\5\599.pbm" />
+    <None Include="HandWritingNumbers\6\600.pbm" />
+    <None Include="HandWritingNumbers\6\601.pbm" />
+    <None Include="HandWritingNumbers\6\602.pbm" />
+    <None Include="HandWritingNumbers\6\603.pbm" />
+    <None Include="HandWritingNumbers\6\604.pbm" />
+    <None Include="HandWritingNumbers\6\605.pbm" />
+    <None Include="HandWritingNumbers\6\606.pbm" />
+    <None Include="HandWritingNumbers\6\607.pbm" />
+    <None Include="HandWritingNumbers\6\608.pbm" />
+    <None Include="HandWritingNumbers\6\609.pbm" />
+    <None Include="HandWritingNumbers\6\610.pbm" />
+    <None Include="HandWritingNumbers\6\611.pbm" />
+    <None Include="HandWritingNumbers\6\612.pbm" />
+    <None Include="HandWritingNumbers\6\613.pbm" />
+    <None Include="HandWritingNumbers\6\614.pbm" />
+    <None Include="HandWritingNumbers\6\615.pbm" />
+    <None Include="HandWritingNumbers\6\616.pbm" />
+    <None Include="HandWritingNumbers\6\617.pbm" />
+    <None Include="HandWritingNumbers\6\618.pbm" />
+    <None Include="HandWritingNumbers\6\619.pbm" />
+    <None Include="HandWritingNumbers\6\620.pbm" />
+    <None Include="HandWritingNumbers\6\621.pbm" />
+    <None Include="HandWritingNumbers\6\622.pbm" />
+    <None Include="HandWritingNumbers\6\623.pbm" />
+    <None Include="HandWritingNumbers\6\624.pbm" />
+    <None Include="HandWritingNumbers\6\625.pbm" />
+    <None Include="HandWritingNumbers\6\626.pbm" />
+    <None Include="HandWritingNumbers\6\627.pbm" />
+    <None Include="HandWritingNumbers\6\628.pbm" />
+    <None Include="HandWritingNumbers\6\629.pbm" />
+    <None Include="HandWritingNumbers\6\630.pbm" />
+    <None Include="HandWritingNumbers\6\631.pbm" />
+    <None Include="HandWritingNumbers\6\632.pbm" />
+    <None Include="HandWritingNumbers\6\633.pbm" />
+    <None Include="HandWritingNumbers\6\634.pbm" />
+    <None Include="HandWritingNumbers\6\635.pbm" />
+    <None Include="HandWritingNumbers\6\636.pbm" />
+    <None Include="HandWritingNumbers\6\637.pbm" />
+    <None Include="HandWritingNumbers\6\638.pbm" />
+    <None Include="HandWritingNumbers\6\639.pbm" />
+    <None Include="HandWritingNumbers\6\640.pbm" />
+    <None Include="HandWritingNumbers\6\641.pbm" />
+    <None Include="HandWritingNumbers\6\642.pbm" />
+    <None Include="HandWritingNumbers\6\643.pbm" />
+    <None Include="HandWritingNumbers\6\644.pbm" />
+    <None Include="HandWritingNumbers\6\645.pbm" />
+    <None Include="HandWritingNumbers\6\646.pbm" />
+    <None Include="HandWritingNumbers\6\647.pbm" />
+    <None Include="HandWritingNumbers\6\648.pbm" />
+    <None Include="HandWritingNumbers\6\649.pbm" />
+    <None Include="HandWritingNumbers\6\650.pbm" />
+    <None Include="HandWritingNumbers\6\651.pbm" />
+    <None Include="HandWritingNumbers\6\652.pbm" />
+    <None Include="HandWritingNumbers\6\653.pbm" />
+    <None Include="HandWritingNumbers\6\654.pbm" />
+    <None Include="HandWritingNumbers\6\655.pbm" />
+    <None Include="HandWritingNumbers\6\656.pbm" />
+    <None Include="HandWritingNumbers\6\657.pbm" />
+    <None Include="HandWritingNumbers\6\658.pbm" />
+    <None Include="HandWritingNumbers\6\659.pbm" />
+    <None Include="HandWritingNumbers\6\660.pbm" />
+    <None Include="HandWritingNumbers\6\661.pbm" />
+    <None Include="HandWritingNumbers\6\662.pbm" />
+    <None Include="HandWritingNumbers\6\663.pbm" />
+    <None Include="HandWritingNumbers\6\664.pbm" />
+    <None Include="HandWritingNumbers\6\665.pbm" />
+    <None Include="HandWritingNumbers\6\666.pbm" />
+    <None Include="HandWritingNumbers\6\667.pbm" />
+    <None Include="HandWritingNumbers\6\668.pbm" />
+    <None Include="HandWritingNumbers\6\669.pbm" />
+    <None Include="HandWritingNumbers\6\670.pbm" />
+    <None Include="HandWritingNumbers\6\671.pbm" />
+    <None Include="HandWritingNumbers\6\672.pbm" />
+    <None Include="HandWritingNumbers\6\673.pbm" />
+    <None Include="HandWritingNumbers\6\674.pbm" />
+    <None Include="HandWritingNumbers\6\675.pbm" />
+    <None Include="HandWritingNumbers\6\676.pbm" />
+    <None Include="HandWritingNumbers\6\677.pbm" />
+    <None Include="HandWritingNumbers\6\678.pbm" />
+    <None Include="HandWritingNumbers\6\679.pbm" />
+    <None Include="HandWritingNumbers\6\680.pbm" />
+    <None Include="HandWritingNumbers\6\681.pbm" />
+    <None Include="HandWritingNumbers\6\682.pbm" />
+    <None Include="HandWritingNumbers\6\683.pbm" />
+    <None Include="HandWritingNumbers\6\684.pbm" />
+    <None Include="HandWritingNumbers\6\685.pbm" />
+    <None Include="HandWritingNumbers\6\686.pbm" />
+    <None Include="HandWritingNumbers\6\687.pbm" />
+    <None Include="HandWritingNumbers\6\688.pbm" />
+    <None Include="HandWritingNumbers\6\689.pbm" />
+    <None Include="HandWritingNumbers\6\690.pbm" />
+    <None Include="HandWritingNumbers\6\691.pbm" />
+    <None Include="HandWritingNumbers\6\692.pbm" />
+    <None Include="HandWritingNumbers\6\693.pbm" />
+    <None Include="HandWritingNumbers\6\694.pbm" />
+    <None Include="HandWritingNumbers\6\695.pbm" />
+    <None Include="HandWritingNumbers\6\696.pbm" />
+    <None Include="HandWritingNumbers\6\697.pbm" />
+    <None Include="HandWritingNumbers\6\698.pbm" />
+    <None Include="HandWritingNumbers\6\699.pbm" />
+    <None Include="HandWritingNumbers\7\700.pbm" />
+    <None Include="HandWritingNumbers\7\701.pbm" />
+    <None Include="HandWritingNumbers\7\702.pbm" />
+    <None Include="HandWritingNumbers\7\703.pbm" />
+    <None Include="HandWritingNumbers\7\704.pbm" />
+    <None Include="HandWritingNumbers\7\705.pbm" />
+    <None Include="HandWritingNumbers\7\706.pbm" />
+    <None Include="HandWritingNumbers\7\707.pbm" />
+    <None Include="HandWritingNumbers\7\708.pbm" />
+    <None Include="HandWritingNumbers\7\709.pbm" />
+    <None Include="HandWritingNumbers\7\710.pbm" />
+    <None Include="HandWritingNumbers\7\711.pbm" />
+    <None Include="HandWritingNumbers\7\712.pbm" />
+    <None Include="HandWritingNumbers\7\713.pbm" />
+    <None Include="HandWritingNumbers\7\714.pbm" />
+    <None Include="HandWritingNumbers\7\715.pbm" />
+    <None Include="HandWritingNumbers\7\716.pbm" />
+    <None Include="HandWritingNumbers\7\717.pbm" />
+    <None Include="HandWritingNumbers\7\718.pbm" />
+    <None Include="HandWritingNumbers\7\719.pbm" />
+    <None Include="HandWritingNumbers\7\720.pbm" />
+    <None Include="HandWritingNumbers\7\721.pbm" />
+    <None Include="HandWritingNumbers\7\722.pbm" />
+    <None Include="HandWritingNumbers\7\723.pbm" />
+    <None Include="HandWritingNumbers\7\724.pbm" />
+    <None Include="HandWritingNumbers\7\725.pbm" />
+    <None Include="HandWritingNumbers\7\726.pbm" />
+    <None Include="HandWritingNumbers\7\727.pbm" />
+    <None Include="HandWritingNumbers\7\728.pbm" />
+    <None Include="HandWritingNumbers\7\729.pbm" />
+    <None Include="HandWritingNumbers\7\730.pbm" />
+    <None Include="HandWritingNumbers\7\731.pbm" />
+    <None Include="HandWritingNumbers\7\732.pbm" />
+    <None Include="HandWritingNumbers\7\733.pbm" />
+    <None Include="HandWritingNumbers\7\734.pbm" />
+    <None Include="HandWritingNumbers\7\735.pbm" />
+    <None Include="HandWritingNumbers\7\736.pbm" />
+    <None Include="HandWritingNumbers\7\737.pbm" />
+    <None Include="HandWritingNumbers\7\738.pbm" />
+    <None Include="HandWritingNumbers\7\739.pbm" />
+    <None Include="HandWritingNumbers\7\740.pbm" />
+    <None Include="HandWritingNumbers\7\741.pbm" />
+    <None Include="HandWritingNumbers\7\742.pbm" />
+    <None Include="HandWritingNumbers\7\743.pbm" />
+    <None Include="HandWritingNumbers\7\744.pbm" />
+    <None Include="HandWritingNumbers\7\745.pbm" />
+    <None Include="HandWritingNumbers\7\746.pbm" />
+    <None Include="HandWritingNumbers\7\747.pbm" />
+    <None Include="HandWritingNumbers\7\748.pbm" />
+    <None Include="HandWritingNumbers\7\749.pbm" />
+    <None Include="HandWritingNumbers\7\750.pbm" />
+    <None Include="HandWritingNumbers\7\751.pbm" />
+    <None Include="HandWritingNumbers\7\752.pbm" />
+    <None Include="HandWritingNumbers\7\753.pbm" />
+    <None Include="HandWritingNumbers\7\754.pbm" />
+    <None Include="HandWritingNumbers\7\755.pbm" />
+    <None Include="HandWritingNumbers\7\756.pbm" />
+    <None Include="HandWritingNumbers\7\757.pbm" />
+    <None Include="HandWritingNumbers\7\758.pbm" />
+    <None Include="HandWritingNumbers\7\759.pbm" />
+    <None Include="HandWritingNumbers\7\760.pbm" />
+    <None Include="HandWritingNumbers\7\761.pbm" />
+    <None Include="HandWritingNumbers\7\762.pbm" />
+    <None Include="HandWritingNumbers\7\763.pbm" />
+    <None Include="HandWritingNumbers\7\764.pbm" />
+    <None Include="HandWritingNumbers\7\765.pbm" />
+    <None Include="HandWritingNumbers\7\766.pbm" />
+    <None Include="HandWritingNumbers\7\767.pbm" />
+    <None Include="HandWritingNumbers\7\768.pbm" />
+    <None Include="HandWritingNumbers\7\769.pbm" />
+    <None Include="HandWritingNumbers\7\770.pbm" />
+    <None Include="HandWritingNumbers\7\771.pbm" />
+    <None Include="HandWritingNumbers\7\772.pbm" />
+    <None Include="HandWritingNumbers\7\773.pbm" />
+    <None Include="HandWritingNumbers\7\774.pbm" />
+    <None Include="HandWritingNumbers\7\775.pbm" />
+    <None Include="HandWritingNumbers\7\776.pbm" />
+    <None Include="HandWritingNumbers\7\777.pbm" />
+    <None Include="HandWritingNumbers\7\778.pbm" />
+    <None Include="HandWritingNumbers\7\779.pbm" />
+    <None Include="HandWritingNumbers\7\780.pbm" />
+    <None Include="HandWritingNumbers\7\781.pbm" />
+    <None Include="HandWritingNumbers\7\782.pbm" />
+    <None Include="HandWritingNumbers\7\783.pbm" />
+    <None Include="HandWritingNumbers\7\784.pbm" />
+    <None Include="HandWritingNumbers\7\785.pbm" />
+    <None Include="HandWritingNumbers\7\786.pbm" />
+    <None Include="HandWritingNumbers\7\787.pbm" />
+    <None Include="HandWritingNumbers\7\788.pbm" />
+    <None Include="HandWritingNumbers\7\789.pbm" />
+    <None Include="HandWritingNumbers\7\790.pbm" />
+    <None Include="HandWritingNumbers\7\791.pbm" />
+    <None Include="HandWritingNumbers\7\792.pbm" />
+    <None Include="HandWritingNumbers\7\793.pbm" />
+    <None Include="HandWritingNumbers\7\794.pbm" />
+    <None Include="HandWritingNumbers\7\795.pbm" />
+    <None Include="HandWritingNumbers\7\796.pbm" />
+    <None Include="HandWritingNumbers\7\797.pbm" />
+    <None Include="HandWritingNumbers\7\798.pbm" />
+    <None Include="HandWritingNumbers\7\799.pbm" />
+    <None Include="HandWritingNumbers\8\800.pbm" />
+    <None Include="HandWritingNumbers\8\801.pbm" />
+    <None Include="HandWritingNumbers\8\802.pbm" />
+    <None Include="HandWritingNumbers\8\803.pbm" />
+    <None Include="HandWritingNumbers\8\804.pbm" />
+    <None Include="HandWritingNumbers\8\805.pbm" />
+    <None Include="HandWritingNumbers\8\806.pbm" />
+    <None Include="HandWritingNumbers\8\807.pbm" />
+    <None Include="HandWritingNumbers\8\808.pbm" />
+    <None Include="HandWritingNumbers\8\809.pbm" />
+    <None Include="HandWritingNumbers\8\810.pbm" />
+    <None Include="HandWritingNumbers\8\811.pbm" />
+    <None Include="HandWritingNumbers\8\812.pbm" />
+    <None Include="HandWritingNumbers\8\813.pbm" />
+    <None Include="HandWritingNumbers\8\814.pbm" />
+    <None Include="HandWritingNumbers\8\815.pbm" />
+    <None Include="HandWritingNumbers\8\816.pbm" />
+    <None Include="HandWritingNumbers\8\817.pbm" />
+    <None Include="HandWritingNumbers\8\818.pbm" />
+    <None Include="HandWritingNumbers\8\819.pbm" />
+    <None Include="HandWritingNumbers\8\820.pbm" />
+    <None Include="HandWritingNumbers\8\821.pbm" />
+    <None Include="HandWritingNumbers\8\822.pbm" />
+    <None Include="HandWritingNumbers\8\823.pbm" />
+    <None Include="HandWritingNumbers\8\824.pbm" />
+    <None Include="HandWritingNumbers\8\825.pbm" />
+    <None Include="HandWritingNumbers\8\826.pbm" />
+    <None Include="HandWritingNumbers\8\827.pbm" />
+    <None Include="HandWritingNumbers\8\828.pbm" />
+    <None Include="HandWritingNumbers\8\829.pbm" />
+    <None Include="HandWritingNumbers\8\830.pbm" />
+    <None Include="HandWritingNumbers\8\831.pbm" />
+    <None Include="HandWritingNumbers\8\832.pbm" />
+    <None Include="HandWritingNumbers\8\833.pbm" />
+    <None Include="HandWritingNumbers\8\834.pbm" />
+    <None Include="HandWritingNumbers\8\835.pbm" />
+    <None Include="HandWritingNumbers\8\836.pbm" />
+    <None Include="HandWritingNumbers\8\837.pbm" />
+    <None Include="HandWritingNumbers\8\838.pbm" />
+    <None Include="HandWritingNumbers\8\839.pbm" />
+    <None Include="HandWritingNumbers\8\840.pbm" />
+    <None Include="HandWritingNumbers\8\841.pbm" />
+    <None Include="HandWritingNumbers\8\842.pbm" />
+    <None Include="HandWritingNumbers\8\843.pbm" />
+    <None Include="HandWritingNumbers\8\844.pbm" />
+    <None Include="HandWritingNumbers\8\845.pbm" />
+    <None Include="HandWritingNumbers\8\846.pbm" />
+    <None Include="HandWritingNumbers\8\847.pbm" />
+    <None Include="HandWritingNumbers\8\848.pbm" />
+    <None Include="HandWritingNumbers\8\849.pbm" />
+    <None Include="HandWritingNumbers\8\850.pbm" />
+    <None Include="HandWritingNumbers\8\851.pbm" />
+    <None Include="HandWritingNumbers\8\852.pbm" />
+    <None Include="HandWritingNumbers\8\853.pbm" />
+    <None Include="HandWritingNumbers\8\854.pbm" />
+    <None Include="HandWritingNumbers\8\855.pbm" />
+    <None Include="HandWritingNumbers\8\856.pbm" />
+    <None Include="HandWritingNumbers\8\857.pbm" />
+    <None Include="HandWritingNumbers\8\858.pbm" />
+    <None Include="HandWritingNumbers\8\859.pbm" />
+    <None Include="HandWritingNumbers\8\860.pbm" />
+    <None Include="HandWritingNumbers\8\861.pbm" />
+    <None Include="HandWritingNumbers\8\862.pbm" />
+    <None Include="HandWritingNumbers\8\863.pbm" />
+    <None Include="HandWritingNumbers\8\864.pbm" />
+    <None Include="HandWritingNumbers\8\865.pbm" />
+    <None Include="HandWritingNumbers\8\866.pbm" />
+    <None Include="HandWritingNumbers\8\867.pbm" />
+    <None Include="HandWritingNumbers\8\868.pbm" />
+    <None Include="HandWritingNumbers\8\869.pbm" />
+    <None Include="HandWritingNumbers\8\870.pbm" />
+    <None Include="HandWritingNumbers\8\871.pbm" />
+    <None Include="HandWritingNumbers\8\872.pbm" />
+    <None Include="HandWritingNumbers\8\873.pbm" />
+    <None Include="HandWritingNumbers\8\874.pbm" />
+    <None Include="HandWritingNumbers\8\875.pbm" />
+    <None Include="HandWritingNumbers\8\876.pbm" />
+    <None Include="HandWritingNumbers\8\877.pbm" />
+    <None Include="HandWritingNumbers\8\878.pbm" />
+    <None Include="HandWritingNumbers\8\879.pbm" />
+    <None Include="HandWritingNumbers\8\880.pbm" />
+    <None Include="HandWritingNumbers\8\881.pbm" />
+    <None Include="HandWritingNumbers\8\882.pbm" />
+    <None Include="HandWritingNumbers\8\883.pbm" />
+    <None Include="HandWritingNumbers\8\884.pbm" />
+    <None Include="HandWritingNumbers\8\885.pbm" />
+    <None Include="HandWritingNumbers\8\886.pbm" />
+    <None Include="HandWritingNumbers\8\887.pbm" />
+    <None Include="HandWritingNumbers\8\888.pbm" />
+    <None Include="HandWritingNumbers\8\889.pbm" />
+    <None Include="HandWritingNumbers\8\890.pbm" />
+    <None Include="HandWritingNumbers\8\891.pbm" />
+    <None Include="HandWritingNumbers\8\892.pbm" />
+    <None Include="HandWritingNumbers\8\893.pbm" />
+    <None Include="HandWritingNumbers\8\894.pbm" />
+    <None Include="HandWritingNumbers\8\895.pbm" />
+    <None Include="HandWritingNumbers\8\896.pbm" />
+    <None Include="HandWritingNumbers\8\897.pbm" />
+    <None Include="HandWritingNumbers\8\898.pbm" />
+    <None Include="HandWritingNumbers\8\899.pbm" />
+    <None Include="HandWritingNumbers\9\900.pbm" />
+    <None Include="HandWritingNumbers\9\901.pbm" />
+    <None Include="HandWritingNumbers\9\902.pbm" />
+    <None Include="HandWritingNumbers\9\903.pbm" />
+    <None Include="HandWritingNumbers\9\904.pbm" />
+    <None Include="HandWritingNumbers\9\905.pbm" />
+    <None Include="HandWritingNumbers\9\906.pbm" />
+    <None Include="HandWritingNumbers\9\907.pbm" />
+    <None Include="HandWritingNumbers\9\908.pbm" />
+    <None Include="HandWritingNumbers\9\909.pbm" />
+    <None Include="HandWritingNumbers\9\910.pbm" />
+    <None Include="HandWritingNumbers\9\911.pbm" />
+    <None Include="HandWritingNumbers\9\912.pbm" />
+    <None Include="HandWritingNumbers\9\913.pbm" />
+    <None Include="HandWritingNumbers\9\914.pbm" />
+    <None Include="HandWritingNumbers\9\915.pbm" />
+    <None Include="HandWritingNumbers\9\916.pbm" />
+    <None Include="HandWritingNumbers\9\917.pbm" />
+    <None Include="HandWritingNumbers\9\918.pbm" />
+    <None Include="HandWritingNumbers\9\919.pbm" />
+    <None Include="HandWritingNumbers\9\920.pbm" />
+    <None Include="HandWritingNumbers\9\921.pbm" />
+    <None Include="HandWritingNumbers\9\922.pbm" />
+    <None Include="HandWritingNumbers\9\923.pbm" />
+    <None Include="HandWritingNumbers\9\924.pbm" />
+    <None Include="HandWritingNumbers\9\925.pbm" />
+    <None Include="HandWritingNumbers\9\926.pbm" />
+    <None Include="HandWritingNumbers\9\927.pbm" />
+    <None Include="HandWritingNumbers\9\928.pbm" />
+    <None Include="HandWritingNumbers\9\929.pbm" />
+    <None Include="HandWritingNumbers\9\930.pbm" />
+    <None Include="HandWritingNumbers\9\931.pbm" />
+    <None Include="HandWritingNumbers\9\932.pbm" />
+    <None Include="HandWritingNumbers\9\933.pbm" />
+    <None Include="HandWritingNumbers\9\934.pbm" />
+    <None Include="HandWritingNumbers\9\935.pbm" />
+    <None Include="HandWritingNumbers\9\936.pbm" />
+    <None Include="HandWritingNumbers\9\937.pbm" />
+    <None Include="HandWritingNumbers\9\938.pbm" />
+    <None Include="HandWritingNumbers\9\939.pbm" />
+    <None Include="HandWritingNumbers\9\940.pbm" />
+    <None Include="HandWritingNumbers\9\941.pbm" />
+    <None Include="HandWritingNumbers\9\942.pbm" />
+    <None Include="HandWritingNumbers\9\943.pbm" />
+    <None Include="HandWritingNumbers\9\944.pbm" />
+    <None Include="HandWritingNumbers\9\945.pbm" />
+    <None Include="HandWritingNumbers\9\946.pbm" />
+    <None Include="HandWritingNumbers\9\947.pbm" />
+    <None Include="HandWritingNumbers\9\948.pbm" />
+    <None Include="HandWritingNumbers\9\949.pbm" />
+    <None Include="HandWritingNumbers\9\950.pbm" />
+    <None Include="HandWritingNumbers\9\951.pbm" />
+    <None Include="HandWritingNumbers\9\952.pbm" />
+    <None Include="HandWritingNumbers\9\953.pbm" />
+    <None Include="HandWritingNumbers\9\954.pbm" />
+    <None Include="HandWritingNumbers\9\955.pbm" />
+    <None Include="HandWritingNumbers\9\956.pbm" />
+    <None Include="HandWritingNumbers\9\957.pbm" />
+    <None Include="HandWritingNumbers\9\958.pbm" />
+    <None Include="HandWritingNumbers\9\959.pbm" />
+    <None Include="HandWritingNumbers\9\960.pbm" />
+    <None Include="HandWritingNumbers\9\961.pbm" />
+    <None Include="HandWritingNumbers\9\962.pbm" />
+    <None Include="HandWritingNumbers\9\963.pbm" />
+    <None Include="HandWritingNumbers\9\964.pbm" />
+    <None Include="HandWritingNumbers\9\965.pbm" />
+    <None Include="HandWritingNumbers\9\966.pbm" />
+    <None Include="HandWritingNumbers\9\967.pbm" />
+    <None Include="HandWritingNumbers\9\968.pbm" />
+    <None Include="HandWritingNumbers\9\969.pbm" />
+    <None Include="HandWritingNumbers\9\970.pbm" />
+    <None Include="HandWritingNumbers\9\971.pbm" />
+    <None Include="HandWritingNumbers\9\972.pbm" />
+    <None Include="HandWritingNumbers\9\973.pbm" />
+    <None Include="HandWritingNumbers\9\974.pbm" />
+    <None Include="HandWritingNumbers\9\975.pbm" />
+    <None Include="HandWritingNumbers\9\976.pbm" />
+    <None Include="HandWritingNumbers\9\977.pbm" />
+    <None Include="HandWritingNumbers\9\978.pbm" />
+    <None Include="HandWritingNumbers\9\979.pbm" />
+    <None Include="HandWritingNumbers\9\980.pbm" />
+    <None Include="HandWritingNumbers\9\981.pbm" />
+    <None Include="HandWritingNumbers\9\982.pbm" />
+    <None Include="HandWritingNumbers\9\983.pbm" />
+    <None Include="HandWritingNumbers\9\984.pbm" />
+    <None Include="HandWritingNumbers\9\985.pbm" />
+    <None Include="HandWritingNumbers\9\986.pbm" />
+    <None Include="HandWritingNumbers\9\987.pbm" />
+    <None Include="HandWritingNumbers\9\988.pbm" />
+    <None Include="HandWritingNumbers\9\989.pbm" />
+    <None Include="HandWritingNumbers\9\990.pbm" />
+    <None Include="HandWritingNumbers\9\991.pbm" />
+    <None Include="HandWritingNumbers\9\992.pbm" />
+    <None Include="HandWritingNumbers\9\993.pbm" />
+    <None Include="HandWritingNumbers\9\994.pbm" />
+    <None Include="HandWritingNumbers\9\995.pbm" />
+    <None Include="HandWritingNumbers\9\996.pbm" />
+    <None Include="HandWritingNumbers\9\997.pbm" />
+    <None Include="HandWritingNumbers\9\998.pbm" />
+    <None Include="HandWritingNumbers\9\999.pbm" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\x64\msvcp120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\OpenCvSharpExtern.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_calib3d2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_contrib2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_core2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_features2d2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_ffmpeg2410_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_flann2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_gpu2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_highgui2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_imgproc2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_legacy2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_ml2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_nonfree2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_objdetect2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_ocl2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_photo2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_stitching2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_superres2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_video2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x64\opencv_videostab2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\msvcp120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\OpenCvSharpExtern.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_calib3d2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_contrib2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_core2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_features2d2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_ffmpeg2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_flann2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_gpu2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_highgui2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_imgproc2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_legacy2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_ml2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_nonfree2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_objdetect2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_ocl2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_photo2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_stitching2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_superres2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_video2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dll\x86\opencv_videostab2410.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Numbers\0\0.png" />
+    <Content Include="Numbers\0\det_0_103.png" />
+    <Content Include="Numbers\0\det_0_112.png" />
+    <Content Include="Numbers\0\det_0_137.png" />
+    <Content Include="Numbers\0\det_0_154.png" />
+    <Content Include="Numbers\0\det_0_160.png" />
+    <Content Include="Numbers\0\det_0_173.png" />
+    <Content Include="Numbers\0\det_0_181.png" />
+    <Content Include="Numbers\0\det_0_197.png" />
+    <Content Include="Numbers\0\det_0_28.png" />
+    <Content Include="Numbers\0\det_0_51.png" />
+    <Content Include="Numbers\0\det_0_83.png" />
+    <Content Include="Numbers\0\det_0_99.png" />
+    <Content Include="Numbers\1\1.png" />
+    <Content Include="Numbers\1\det_1_115.png" />
+    <Content Include="Numbers\1\det_1_117.png" />
+    <Content Include="Numbers\1\det_1_133.png" />
+    <Content Include="Numbers\1\det_1_190.png" />
+    <Content Include="Numbers\1\det_1_202.png" />
+    <Content Include="Numbers\1\det_1_30.png" />
+    <Content Include="Numbers\1\det_1_46.png" />
+    <Content Include="Numbers\1\det_1_85.png" />
+    <Content Include="Numbers\1\det_1_89.png" />
+    <Content Include="Numbers\1\det_1_98.png" />
+    <Content Include="Numbers\1\det_3_105.png" />
+    <Content Include="Numbers\1\det_3_116.png" />
+    <Content Include="Numbers\1\det_3_146.png" />
+    <Content Include="Numbers\1\det_3_7.png" />
+    <Content Include="Numbers\2\2.png" />
+    <Content Include="Numbers\2\det_2_102.png" />
+    <Content Include="Numbers\2\det_2_111.png" />
+    <Content Include="Numbers\2\det_2_132.png" />
+    <Content Include="Numbers\2\det_2_144.png" />
+    <Content Include="Numbers\2\det_2_148.png" />
+    <Content Include="Numbers\2\det_2_149.png" />
+    <Content Include="Numbers\2\det_2_184.png" />
+    <Content Include="Numbers\2\det_2_188.png" />
+    <Content Include="Numbers\2\det_2_203.png" />
+    <Content Include="Numbers\2\det_2_37.png" />
+    <Content Include="Numbers\2\det_2_6.png" />
+    <Content Include="Numbers\2\det_2_68.png" />
+    <Content Include="Numbers\2\det_2_69.png" />
+    <Content Include="Numbers\2\det_2_90.png" />
+    <Content Include="Numbers\3\3.png" />
+    <Content Include="Numbers\3\det_3_142.png" />
+    <Content Include="Numbers\3\det_3_147.png" />
+    <Content Include="Numbers\3\det_3_15.png" />
+    <Content Include="Numbers\3\det_3_16.png" />
+    <Content Include="Numbers\3\det_3_170.png" />
+    <Content Include="Numbers\3\det_3_183.png" />
+    <Content Include="Numbers\3\det_3_189.png" />
+    <Content Include="Numbers\3\det_3_50.png" />
+    <Content Include="Numbers\3\det_3_53.png" />
+    <Content Include="Numbers\3\det_3_95.png" />
+    <Content Include="Numbers\4\4.png" />
+    <Content Include="Numbers\4\det_4_1.png" />
+    <Content Include="Numbers\4\det_4_106.png" />
+    <Content Include="Numbers\4\det_4_11.png" />
+    <Content Include="Numbers\4\det_4_121.png" />
+    <Content Include="Numbers\4\det_4_126.png" />
+    <Content Include="Numbers\4\det_4_128.png" />
+    <Content Include="Numbers\4\det_4_13.png" />
+    <Content Include="Numbers\4\det_4_130.png" />
+    <Content Include="Numbers\4\det_4_165.png" />
+    <Content Include="Numbers\4\det_4_175.png" />
+    <Content Include="Numbers\4\det_4_38.png" />
+    <Content Include="Numbers\4\det_4_40.png" />
+    <Content Include="Numbers\4\det_4_56.png" />
+    <Content Include="Numbers\4\det_4_64.png" />
+    <Content Include="Numbers\4\det_4_72.png" />
+    <Content Include="Numbers\4\det_4_74.png" />
+    <Content Include="Numbers\4\det_4_86.png" />
+    <Content Include="Numbers\5\5.png" />
+    <Content Include="Numbers\5\det_5_114.png" />
+    <Content Include="Numbers\5\det_5_141.png" />
+    <Content Include="Numbers\5\det_5_143.png" />
+    <Content Include="Numbers\5\det_5_153.png" />
+    <Content Include="Numbers\5\det_5_156.png" />
+    <Content Include="Numbers\5\det_5_157.png" />
+    <Content Include="Numbers\5\det_5_19.png" />
+    <Content Include="Numbers\5\det_5_191.png" />
+    <Content Include="Numbers\5\det_5_24.png" />
+    <Content Include="Numbers\5\det_5_58.png" />
+    <Content Include="Numbers\5\det_5_80.png" />
+    <Content Include="Numbers\5\det_5_81.png" />
+    <Content Include="Numbers\5\det_5_82.png" />
+    <Content Include="Numbers\5\det_5_91.png" />
+    <Content Include="Numbers\6\6.png" />
+    <Content Include="Numbers\6\det_6_162.png" />
+    <Content Include="Numbers\6\det_6_177.png" />
+    <Content Include="Numbers\6\det_6_179.png" />
+    <Content Include="Numbers\6\det_6_192.png" />
+    <Content Include="Numbers\6\det_6_20.png" />
+    <Content Include="Numbers\6\det_6_22.png" />
+    <Content Include="Numbers\6\det_6_42.png" />
+    <Content Include="Numbers\6\det_6_70.png" />
+    <Content Include="Numbers\6\det_6_76.png" />
+    <Content Include="Numbers\6\det_6_8.png" />
+    <Content Include="Numbers\7\7.png" />
+    <Content Include="Numbers\7\det_7_0.png" />
+    <Content Include="Numbers\7\det_7_101.png" />
+    <Content Include="Numbers\7\det_7_145.png" />
+    <Content Include="Numbers\7\det_7_164.png" />
+    <Content Include="Numbers\7\det_7_25.png" />
+    <Content Include="Numbers\7\det_7_88.png" />
+    <Content Include="Numbers\8\8.png" />
+    <Content Include="Numbers\8\det_6_47.png" />
+    <Content Include="Numbers\8\det_8_108.png" />
+    <Content Include="Numbers\8\det_8_118.png" />
+    <Content Include="Numbers\8\det_8_123.png" />
+    <Content Include="Numbers\8\det_8_134.png" />
+    <Content Include="Numbers\8\det_8_150.png" />
+    <Content Include="Numbers\8\det_8_167.png" />
+    <Content Include="Numbers\8\det_8_185.png" />
+    <Content Include="Numbers\8\det_8_194.png" />
+    <Content Include="Numbers\8\det_8_199.png" />
+    <Content Include="Numbers\8\det_8_204.png" />
+    <Content Include="Numbers\8\det_8_3.png" />
+    <Content Include="Numbers\8\det_8_31.png" />
+    <Content Include="Numbers\8\det_8_34.png" />
+    <Content Include="Numbers\8\det_8_61.png" />
+    <Content Include="Numbers\8\det_8_92.png" />
+    <Content Include="Numbers\9\9.png" />
+    <Content Include="Numbers\9\det_9_139.png" />
+    <Content Include="Numbers\9\det_9_158.png" />
+    <Content Include="Numbers\9\det_9_17.png" />
+    <Content Include="Numbers\9\det_9_171.png" />
+    <Content Include="Numbers\9\det_9_207.png" />
+    <Content Include="Numbers\9\det_9_26.png" />
+    <Content Include="Numbers\9\det_9_44.png" />
+    <Content Include="Numbers\9\det_9_54.png" />
+    <Content Include="Numbers\9\det_9_59.png" />
+    <Content Include="Numbers\9\det_9_66.png" />
+    <Content Include="Numbers\9\det_9_78.png" />
+    <Content Include="Numbers\9\det_9_96.png" />
+    <Content Include="Samples\sample1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
