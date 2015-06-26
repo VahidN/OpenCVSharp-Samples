@@ -19,6 +19,11 @@ namespace OpenCVSharpSample06WinForms
 
         private static double getFps(CvCapture capture)
         {
+            while (capture.QueryFrame() == null)
+            {
+                /* start camera */
+            }
+
             double counter = 0;
             double seconds = 0;
             var watch = Stopwatch.StartNew();
