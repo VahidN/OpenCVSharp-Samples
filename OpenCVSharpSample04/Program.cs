@@ -11,9 +11,67 @@ namespace OpenCVSharpSample04
             testBuiltinFilters();
         }
 
+        private static void testBuiltinFilters()
+        {
+            using (var src = new Mat(@"..\..\Images\Car.jpg", ImreadModes.AnyDepth | ImreadModes.AnyColor))
+            {
+                using (var dst = new Mat())
+                {
+                    src.CopyTo(dst);
+
+                    using (new Window("src", image: src))
+                    {
+                        Cv2.Erode(src, dst, new Mat());
+                        using (new Window("Erode", image: dst))
+                        {
+                            Cv2.Dilate(src, dst, new Mat());
+                            using (new Window("Dilate", image: dst))
+                            {
+                                Cv2.BitwiseNot(src, dst);
+                                using (new Window("Invert", image: dst))
+                                {
+                                    Cv2.WaitKey();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private static void applyLinearFilter()
         {
-            using (var src = new IplImage(@"..\..\Images\Penguin.Png", LoadMode.AnyDepth | LoadMode.AnyColor))
+            using (var src = new Mat(@"..\..\Images\Penguin.Png", ImreadModes.AnyDepth | ImreadModes.AnyColor))
+            using (var dst = new Mat())
+            {
+                src.CopyTo(dst);
+
+                float[] data = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+                var kernel = new Mat(rows: 1, cols: 21, type: MatType.CV_32FC1, data: data);
+
+                Cv2.Normalize(src: kernel, dst: kernel, alpha: 1.0, beta: 0, normType: NormTypes.L1);
+
+                double sum = 0;
+                foreach (var item in data)
+                {
+                    sum += Math.Abs(item);
+                }
+                Console.WriteLine(sum); // => .999999970197678
+
+                Cv2.Filter2D(src, dst, MatType.CV_32FC1, kernel, anchor: new Point(0, 0));
+
+                using (new Window("src", image: src))
+                using (new Window("dst", image: dst))
+                {
+                    Cv2.WaitKey();
+                }
+            }
+
+        }
+
+        /*private static void applyLinearFilter_version2xDeprecated()
+        {
+            using (var src = new IplImage(@"..\..\Images\Penguin.Png", ImreadModes.AnyDepth | ImreadModes.AnyColor))
             using (var dst = new IplImage(src.Size, src.Depth, src.NChannels))
             {
                 float[] data = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
@@ -38,9 +96,9 @@ namespace OpenCVSharpSample04
             }
         }
 
-        private static void testBuiltinFilters()
+        private static void testBuiltinFilters_version2xDeprecated()
         {
-            using (var src = new IplImage(@"..\..\Images\Car.jpg", LoadMode.AnyDepth | LoadMode.AnyColor))
+            using (var src = new IplImage(@"..\..\Images\Car.jpg", ImreadModes.AnyDepth | ImreadModes.AnyColor))
             {
                 using (var dst = new IplImage(src.Size, src.Depth, src.NChannels))
                 {
@@ -62,7 +120,7 @@ namespace OpenCVSharpSample04
                     }
                 }
             }
-        }
+        }*/
 
         /*
         #include <cv.h>

@@ -8,12 +8,33 @@ namespace OpenCVSharpSample02
         {
             readImage1();
             readImage2();
-            readImage3();
+        }
+
+        private static void readImage2()
+        {
+            using (var src = new Mat(@"..\..\Images\ocv02.jpg", ImreadModes.Unchanged))
+            {
+                using (var window = new Window("window", image: src, flags: WindowMode.AutoSize))
+                {
+                    Cv2.WaitKey();
+                }
+            }
         }
 
         private static void readImage1()
         {
-            var img = Cv.LoadImage(@"..\..\images\ocv02.jpg", LoadMode.GrayScale);
+            using (var src = new Mat(@"..\..\Images\ocv02.jpg", ImreadModes.GrayScale))
+            {
+                using (var window = new Window("window", image: src, flags: WindowMode.AutoSize))
+                {
+                    Cv2.WaitKey();
+                }
+            }
+        }
+
+        /*private static void readImage1_version2xDeprecated()
+        {
+            var img = Cv.LoadImage(@"..\..\images\ocv02.jpg", ImreadModes.GrayScale);
 
             Cv.NamedWindow("window");
             Cv.ShowImage("window", img);
@@ -25,7 +46,7 @@ namespace OpenCVSharpSample02
             Cv.ReleaseImage(img);
         }
 
-        private static void readImage2()
+        private static void readImage2_version2xDeprecated()
         {
             using (var img = new IplImage(@"..\..\images\ocv02.jpg", LoadMode.Unchanged))
             {
@@ -37,7 +58,7 @@ namespace OpenCVSharpSample02
             }
         }
 
-        private static void readImage3()
+        private static void readImage3_version2xDeprecated()
         {
             // it uses `System.Drawing.Bitmap` behind the scene.
             using (var img = IplImage.FromFile(@"..\..\images\ocv02.jpg", LoadMode.Unchanged))
@@ -48,6 +69,6 @@ namespace OpenCVSharpSample02
                     Cv.WaitKey();
                 }
             }
-        }
+        }*/
     }
 }

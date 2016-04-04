@@ -1,5 +1,4 @@
 ﻿using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
 
 namespace OpenCVSharpSample08
 {
@@ -7,18 +6,18 @@ namespace OpenCVSharpSample08
     {
         static void Main(string[] args)
         {
-            using (var src = new Mat(@"..\..\Images\cvmorph.Png", LoadMode.AnyDepth | LoadMode.AnyColor))
+            using (var src = new Mat(@"..\..\Images\cvmorph.Png", ImreadModes.AnyDepth | ImreadModes.AnyColor))
             using (var dst = new Mat())
             {
                 src.CopyTo(dst);
 
-                var elementShape = StructuringElementShape.Rect;
+                var elementShape = MorphShapes.Rect;
                 var maxIterations = 10;
 
                 var openCloseWindow = new Window("Open/Close", image: dst);
                 var openCloseTrackbar = openCloseWindow.CreateTrackbar(
                     name: "Iterations", value: 0, max: maxIterations * 2 + 1,
-                    callback: pos =>
+                    callback: (pos, obj) =>
                     {
                         var n = pos - maxIterations;
                         var an = n > 0 ? n : -n;
@@ -29,17 +28,17 @@ namespace OpenCVSharpSample08
 
                         if (n < 0)
                         {
-                            Cv2.MorphologyEx(src, dst, MorphologyOperation.Open, element);
+                            Cv2.MorphologyEx(src, dst, MorphTypes.Open, element);
                         }
                         else
                         {
-                            Cv2.MorphologyEx(src, dst, MorphologyOperation.Close, element);
+                            Cv2.MorphologyEx(src, dst, MorphTypes.Close, element);
                         }
 
                         Cv2.PutText(dst, (n < 0) ?
                             string.Format("Open/Erosion followed by Dilation[{0}]", elementShape)
                             : string.Format("Close/Dilation followed by Erosion[{0}]", elementShape),
-                            new Point(10, 15), FontFace.HersheyPlain, 1, Scalar.Black);
+                            new Point(10, 15), HersheyFonts.HersheyPlain, 1, Scalar.Black);
                         openCloseWindow.Image = dst;
                     });
 
@@ -47,7 +46,7 @@ namespace OpenCVSharpSample08
                 var erodeDilateWindow = new Window("Erode/Dilate", image: dst);
                 var erodeDilateTrackbar = erodeDilateWindow.CreateTrackbar(
                     name: "Iterations", value: 0, max: maxIterations * 2 + 1,
-                    callback: pos =>
+                    callback: (pos, obj) =>
                     {
                         var n = pos - maxIterations;
                         var an = n > 0 ? n : -n;
@@ -67,7 +66,7 @@ namespace OpenCVSharpSample08
                         Cv2.PutText(dst, (n < 0) ?
                             string.Format("Erode[{0}]", elementShape) :
                             string.Format("Dilate[{0}]", elementShape),
-                            new Point(10, 15), FontFace.HersheyPlain, 1, Scalar.Black);
+                            new Point(10, 15), HersheyFonts.HersheyPlain, 1, Scalar.Black);
                         erodeDilateWindow.Image = dst;
                     });
 
@@ -85,13 +84,13 @@ namespace OpenCVSharpSample08
                     switch ((char)key)
                     {
                         case 'e':
-                            elementShape = StructuringElementShape.Ellipse;
+                            elementShape = MorphShapes.Ellipse;
                             break;
                         case 'r':
-                            elementShape = StructuringElementShape.Rect;
+                            elementShape = MorphShapes.Rect;
                             break;
                         case 'c':
-                            elementShape = StructuringElementShape.Cross;
+                            elementShape = MorphShapes.Cross;
                             break;
                     }
                 }

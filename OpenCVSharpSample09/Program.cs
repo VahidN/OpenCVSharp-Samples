@@ -1,5 +1,4 @@
 ﻿using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
 
 namespace OpenCVSharpSample09
 {
@@ -7,7 +6,7 @@ namespace OpenCVSharpSample09
     {
         static void Main(string[] args)
         {
-            using (var src = new Mat(@"..\..\Images\Penguin.Png", LoadMode.AnyDepth | LoadMode.AnyColor))
+            using (var src = new Mat(@"..\..\Images\Penguin.Png", ImreadModes.AnyDepth | ImreadModes.AnyColor))
             using (var dst = new Mat())
             {
                 src.CopyTo(dst);
@@ -20,7 +19,7 @@ namespace OpenCVSharpSample09
 
                     var angleTrackbar = window.CreateTrackbar(
                         name: "Angle", value: 0, max: 180,
-                        callback: pos =>
+                        callback: (pos, obj) =>
                         {
                             angle = pos;
                             rotateImage(angle, scale, src, dst);
@@ -29,7 +28,7 @@ namespace OpenCVSharpSample09
 
                     var scaleTrackbar = window.CreateTrackbar(
                         name: "Scale", value: 1, max: 10,
-                        callback: pos =>
+                        callback: (pos, obj) =>
                         {
                             scale = pos / 10f;
                             rotateImage(angle, scale, src, dst);
@@ -38,18 +37,18 @@ namespace OpenCVSharpSample09
 
                     var resizeTrackbar = window.CreateTrackbar(
                         name: "Resize", value: 1, max: 100,
-                        callback: pos =>
+                        callback: (pos, obj) =>
                         {
                             rotateImage(angle, scale, src, dst);
                             Cv2.Resize(dst, dst,
                                 new Size(src.Width + pos, src.Height + pos),
-                                interpolation: Interpolation.Cubic);
+                                interpolation: InterpolationFlags.Cubic);
                             window.Image = dst;
                         });
 
                     var blurTrackbar = window.CreateTrackbar(
                        name: "Blur", value: 1, max: 100,
-                       callback: pos =>
+                       callback: (pos, obj) =>
                        {
                            if (pos % 2 == 0) pos++;
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
 
 namespace OpenCVSharpSample11
 {
@@ -13,7 +12,7 @@ namespace OpenCVSharpSample11
 
         private static void example02()
         {
-            var src = new Mat(@"..\..\Images\fruits.jpg", LoadMode.AnyDepth | LoadMode.AnyColor);
+            var src = new Mat(@"..\..\Images\fruits.jpg", ImreadModes.AnyDepth | ImreadModes.AnyColor);
             Cv2.ImShow("Source", src);
             Cv2.WaitKey(1); // do events
 
@@ -39,9 +38,9 @@ namespace OpenCVSharpSample11
                     k: clustersCount,
                     bestLabels: bestLabels,
                     criteria:
-                        new TermCriteria(type: CriteriaType.Epsilon | CriteriaType.Iteration, maxCount: 10, epsilon: 1.0),
+                        new TermCriteria(type: CriteriaType.Eps | CriteriaType.MaxIter, maxCount: 10, epsilon: 1.0),
                     attempts: 3,
-                    flags: KMeansFlag.PpCenters,
+                    flags: KMeansFlags.PpCenters,
                     centers: centers);
 
 
@@ -115,9 +114,9 @@ namespace OpenCVSharpSample11
                         data: points,
                         k: clustersCount,
                         bestLabels: labels,
-                        criteria: new TermCriteria(CriteriaType.Epsilon | CriteriaType.Iteration, 10, 1.0),
+                        criteria: new TermCriteria(CriteriaType.Eps | CriteriaType.MaxIter, 10, 1.0),
                         attempts: 3,
-                        flags: KMeansFlag.PpCenters,
+                        flags: KMeansFlags.PpCenters,
                         centers: centers);
 
 
@@ -139,8 +138,8 @@ namespace OpenCVSharpSample11
                             center: ipt,
                             radius: 2,
                             color: colors[clusterIdx],
-                            lineType: LineType.AntiAlias,
-                            thickness: Cv.FILLED);
+                            lineType: LineTypes.AntiAlias,
+                            thickness: 1);
                     }
 
                     window.Image = img;

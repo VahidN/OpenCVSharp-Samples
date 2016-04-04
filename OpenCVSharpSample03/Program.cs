@@ -6,16 +6,32 @@ namespace OpenCVSharpSample03
     {
         static void Main(string[] args)
         {
-            createAGrayScaleClone1();
-            createAGrayScaleClone2();
+            createAGrayScaleClone();
         }
 
-        private static void createAGrayScaleClone1()
+        private static void createAGrayScaleClone()
+        {
+            using (var src = new Mat(@"..\..\images\ocv02.jpg", ImreadModes.AnyDepth | ImreadModes.AnyColor))
+            {
+                using (var srcCopy = new Mat())
+                {
+                    src.CopyTo(srcCopy);
+                    Cv2.CvtColor(srcCopy, srcCopy, ColorConversionCodes.BGRA2GRAY);
+
+                    using (var sourceWindow = new Window("A GrayScale Clone", image: srcCopy, flags: WindowMode.AutoSize))
+                    {
+                        Cv2.WaitKey();
+                    }
+                }
+            }
+        }
+
+        /*private static void createAGrayScaleClone1_version2xDeprecated()
         {
             using (var src = Cv.LoadImage(@"..\..\images\ocv02.jpg", LoadMode.Color))
             using (var dst = Cv.CreateImage(new CvSize(src.Width, src.Height), BitDepth.U8, 1))
             {
-                Cv.CvtColor(src, dst, ColorConversion.BgrToGray);
+                Cv.CvtColor(src, dst, ColorConversionCodes.BGRA2GRAY);
 
                 using (new CvWindow("src", image: src))
                 using (new CvWindow("dst", image: dst))
@@ -25,13 +41,13 @@ namespace OpenCVSharpSample03
             }
         }
 
-        private static void createAGrayScaleClone2()
+        private static void createAGrayScaleClone2_version2xDeprecated()
         {
             using (var src = new IplImage(@"..\..\images\ocv02.jpg", LoadMode.Color))
             //using (var dst = new IplImage(new CvSize(src.Width, src.Height), BitDepth.U8, 1))
             using (var dst = new IplImage(src.Size, BitDepth.U8, 1))
             {
-                src.CvtColor(dst, ColorConversion.BgrToGray);
+                src.CvtColor(dst, ColorConversionCodes.BGRA2GRAY);
 
                 using (new CvWindow("src", image: src))
                 using (new CvWindow("dst", image: dst))
@@ -39,6 +55,6 @@ namespace OpenCVSharpSample03
                     Cv.WaitKey();
                 }
             }
-        }
+        }*/
     }
 }

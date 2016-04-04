@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
 using OpenCvSharp.Extensions;
 using ZXing;
 using ZXing.Common;
@@ -101,7 +100,7 @@ namespace OpenCVSharpSample19
             var channels = image.Channels();
             if (channels > 1)
             {
-                Cv2.CvtColor(image, gray, ColorConversion.BgrToGray);
+                Cv2.CvtColor(image, gray, ColorConversionCodes.BGRA2GRAY);
             }
             else
             {
@@ -136,7 +135,7 @@ namespace OpenCVSharpSample19
             Cv2.Blur(gradient, blurred, new Size(9, 9));
 
             var threshImage = new Mat();
-            Cv2.Threshold(blurred, threshImage, thresh, 255, ThresholdType.Binary);
+            Cv2.Threshold(blurred, threshImage, thresh, 255, ThresholdTypes.Binary);
 
             if (debug)
             {
@@ -146,9 +145,9 @@ namespace OpenCVSharpSample19
 
 
             // construct a closing kernel and apply it to the thresholded image
-            var kernel = Cv2.GetStructuringElement(StructuringElementShape.Rect, new Size(21, 7));
+            var kernel = Cv2.GetStructuringElement(MorphShapes.Rect, new Size(21, 7));
             var closed = new Mat();
-            Cv2.MorphologyEx(threshImage, closed, MorphologyOperation.Close, kernel);
+            Cv2.MorphologyEx(threshImage, closed, MorphTypes.Close, kernel);
 
             if (debug)
             {
@@ -172,13 +171,13 @@ namespace OpenCVSharpSample19
             //by their area, keeping only the largest one
 
             Point[][] contours;
-            HiearchyIndex[] hierarchyIndexes;
+            HierarchyIndex[] hierarchyIndexes;
             Cv2.FindContours(
                 closed,
                 out contours,
                 out hierarchyIndexes,
-                mode: ContourRetrieval.CComp,
-                method: ContourChain.ApproxSimple);
+                mode: RetrievalModes.CComp,
+                method: ContourApproximationModes.ApproxSimple);
 
             if (contours.Length == 0)
             {
@@ -211,7 +210,7 @@ namespace OpenCVSharpSample19
 
 
             var barcode = new Mat(image, biggestContourRect); //Crop the image
-            Cv2.CvtColor(barcode, barcode, ColorConversion.BgrToGray);
+            Cv2.CvtColor(barcode, barcode, ColorConversionCodes.BGRA2GRAY);
 
             Cv2.ImShow("Barcode", barcode);
             Cv2.WaitKey(1); // do events
@@ -226,8 +225,8 @@ namespace OpenCVSharpSample19
                     //AdaptiveThresholdType.GaussianC, ThresholdType.Binary, 9, 1);
                 //var th = 119;
                 var th = 100;
-                Cv2.Threshold(barcode, barcode, th, 255, ThresholdType.ToZero);
-                Cv2.Threshold(barcode, barcode, th, 255, ThresholdType.Binary);
+                Cv2.Threshold(barcode, barcode, th, 255, ThresholdTypes.Tozero);
+                Cv2.Threshold(barcode, barcode, th, 255, ThresholdTypes.Binary);
                 barcodeText = getBarcodeText(barcode);
             }
 

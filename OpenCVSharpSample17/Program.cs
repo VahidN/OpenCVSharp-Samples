@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
+using OpenCvSharp.Face;
 
 namespace OpenCVSharpSample17
 {
@@ -28,7 +28,7 @@ namespace OpenCVSharpSample17
                 {
                     images.Add(new ImageInfo
                     {
-                        Image = new Mat(imageFile.FullName, LoadMode.GrayScale),
+                        Image = new Mat(imageFile.FullName, ImreadModes.GrayScale),
                         ImageId = imageId++,
                         ImageGroupId = groupId
                     });

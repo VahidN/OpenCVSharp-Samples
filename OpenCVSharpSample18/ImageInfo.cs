@@ -1,4 +1,4 @@
-using OpenCvSharp.CPlusPlus;
+using OpenCvSharp;
 
 namespace OpenCVSharpSample18
 {

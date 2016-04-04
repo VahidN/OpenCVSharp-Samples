@@ -14,9 +14,9 @@ namespace OpenCVSharpSample05Wpf
 
         private void loadImage()
         {
-            using (var iplImage = new IplImage(@"..\..\Images\Penguin.png", LoadMode.Color))
+            using (var iplImage = new Mat(@"..\..\Images\Penguin.png", ImreadModes.AnyDepth | ImreadModes.AnyColor))
             {
-                Cv.Dilate(iplImage, iplImage);
+                Cv2.Dilate(iplImage, iplImage, new Mat());
 
                 Image1.Source = iplImage.ToWriteableBitmap(PixelFormats.Bgr24);
             }

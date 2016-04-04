@@ -1,5 +1,5 @@
 ﻿using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
+using OpenCvSharp.XFeatures2D;
 
 namespace OpenCVSharpSample13
 {
@@ -7,11 +7,11 @@ namespace OpenCVSharpSample13
     {
         static void Main(string[] args)
         {
-            var img1 = new Mat(@"..\..\Images\left.png", LoadMode.GrayScale);
+            var img1 = new Mat(@"..\..\Images\left.png", ImreadModes.GrayScale);
             Cv2.ImShow("Left", img1);
             Cv2.WaitKey(1); // do events
 
-            var img2 = new Mat(@"..\..\Images\right.png", LoadMode.GrayScale);
+            var img2 = new Mat(@"..\..\Images\right.png", ImreadModes.GrayScale);
             Cv2.ImShow("Right", img2);
             Cv2.WaitKey(1); // do events
 
@@ -19,13 +19,13 @@ namespace OpenCVSharpSample13
             // detecting keypoints
             // FastFeatureDetector, StarDetector, SIFT, SURF, ORB, BRISK, MSER, GFTTDetector, DenseFeatureDetector, SimpleBlobDetector
             // SURF = Speeded Up Robust Features
-            var detector = new SURF(hessianThreshold: 400); //A good default value could be from 300 to 500, depending from the image contrast.
+            var detector = SURF.Create(hessianThreshold: 400); //A good default value could be from 300 to 500, depending from the image contrast.
             var keypoints1 = detector.Detect(img1);
             var keypoints2 = detector.Detect(img2);
 
             // computing descriptors, BRIEF, FREAK
             // BRIEF = Binary Robust Independent Elementary Features
-            var extractor = new BriefDescriptorExtractor();
+            var extractor = BriefDescriptorExtractor.Create();
             var descriptors1 = new Mat();
             var descriptors2 = new Mat();
             extractor.Compute(img1, ref keypoints1, descriptors1);

@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
+using OpenCvSharp.ML;
 
 namespace OpenCVSharpSample18
 {
@@ -13,26 +13,26 @@ namespace OpenCVSharpSample18
         private const double Thresh = 80;
         private const double ThresholdMaxVal = 255;
 
-        public void DoOCR(CvKNearest kNearest, string path)
+        public void DoOCR(KNearest kNearest, string path)
         {
             var src = Cv2.ImRead(path);
             Cv2.ImShow("Source", src);
 
             var gray = new Mat();
-            Cv2.CvtColor(src, gray, ColorConversion.BgrToGray);
+            Cv2.CvtColor(src, gray, ColorConversionCodes.BGRA2GRAY);
 
             var threshImage = new Mat();
-            Cv2.Threshold(gray, threshImage, Thresh, ThresholdMaxVal, ThresholdType.BinaryInv); // Threshold to find contour
+            Cv2.Threshold(gray, threshImage, Thresh, ThresholdMaxVal, ThresholdTypes.BinaryInv); // Threshold to find contour
 
 
             Point[][] contours;
-            HiearchyIndex[] hierarchyIndexes;
+            HierarchyIndex[] hierarchyIndexes;
             Cv2.FindContours(
                 threshImage,
                 out contours,
                 out hierarchyIndexes,
-                mode: ContourRetrieval.CComp,
-                method: ContourChain.ApproxSimple);
+                mode: RetrievalModes.CComp,
+                method: ContourApproximationModes.ApproxSimple);
 
             if (contours.Length == 0)
             {
@@ -105,7 +105,7 @@ namespace OpenCVSharpSample18
                 var groupId = int.Parse(dir.Name);
                 foreach (var imageFile in dir.GetFiles(ext))
                 {
-                    var image = processTrainingImage(new Mat(imageFile.FullName, LoadMode.GrayScale));
+                    var image = processTrainingImage(new Mat(imageFile.FullName, ImreadModes.GrayScale));
                     if (image == null)
                     {
                         continue;
@@ -123,7 +123,7 @@ namespace OpenCVSharpSample18
             return images;
         }
 
-        public CvKNearest TrainData(IList<ImageInfo> trainingImages)
+        public KNearest TrainData(IList<ImageInfo> trainingImages)
         {
             var samples = new Mat();
             foreach (var trainingImage in trainingImages)
@@ -137,25 +137,24 @@ namespace OpenCVSharpSample18
             var responseFloat = new Mat();
             tmp.ConvertTo(responseFloat, MatType.CV_32FC1); // Convert  to float
 
-
-            var kNearest = new CvKNearest();
-            kNearest.Train(samples, responseFloat); // Train with sample and responses
+            var kNearest = KNearest.Create();
+            kNearest.Train(samples, SampleTypes.RowSample, responseFloat); // Train with sample and responses
             return kNearest;
         }
 
         private static Mat processTrainingImage(Mat gray)
         {
             var threshImage = new Mat();
-            Cv2.Threshold(gray, threshImage, Thresh, ThresholdMaxVal, ThresholdType.BinaryInv); // Threshold to find contour
+            Cv2.Threshold(gray, threshImage, Thresh, ThresholdMaxVal, ThresholdTypes.BinaryInv); // Threshold to find contour
 
             Point[][] contours;
-            HiearchyIndex[] hierarchyIndexes;
+            HierarchyIndex[] hierarchyIndexes;
             Cv2.FindContours(
                 threshImage,
                 out contours,
                 out hierarchyIndexes,
-                mode: ContourRetrieval.CComp,
-                method: ContourChain.ApproxSimple);
+                mode: RetrievalModes.CComp,
+                method: ContourApproximationModes.ApproxSimple);
 
             if (contours.Length == 0)
             {

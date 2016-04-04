@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text;
 using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
 
 namespace OpenCVSharpSample16
 {
@@ -22,7 +21,7 @@ namespace OpenCVSharpSample16
             Cv2.WaitKey(1); // do events
 
             var grayImage = new Mat();
-            Cv2.CvtColor(srcImage, grayImage, ColorConversion.BgrToGray);
+            Cv2.CvtColor(srcImage, grayImage, ColorConversionCodes.BGRA2GRAY);
             Cv2.EqualizeHist(grayImage, grayImage);
 
             var cascade = new CascadeClassifier(@"..\..\CarsInfo\data\cascade.xml");
@@ -31,7 +30,7 @@ namespace OpenCVSharpSample16
                 image: grayImage,
                 scaleFactor: 1.1,
                 minNeighbors: 2,
-                flags: HaarDetectionType.Zero | HaarDetectionType.ScaleImage,
+                flags: HaarDetectionType.DoRoughSearch | HaarDetectionType.ScaleImage,
                 minSize: new Size(30, 30)
                 );
 
@@ -50,7 +49,7 @@ namespace OpenCVSharpSample16
 
 
                 var detectedFaceGrayImage = new Mat();
-                Cv2.CvtColor(detectedFaceImage, detectedFaceGrayImage, ColorConversion.BgrToGray);
+                Cv2.CvtColor(detectedFaceImage, detectedFaceGrayImage, ColorConversionCodes.BGRA2GRAY);
 
                 count++;
             }

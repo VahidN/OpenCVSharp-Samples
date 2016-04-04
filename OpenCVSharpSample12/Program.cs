@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
 
 namespace OpenCVSharpSample12
 {
@@ -17,15 +16,15 @@ namespace OpenCVSharpSample12
         /// </summary>
         private static void watershedExample()
         {
-            var src = new Mat(@"..\..\Images\corridor.jpg", LoadMode.AnyDepth | LoadMode.AnyColor);
+            var src = new Mat(@"..\..\Images\corridor.jpg", ImreadModes.AnyDepth | ImreadModes.AnyColor);
             var srcCopy = new Mat();
             src.CopyTo(srcCopy);
 
             var markerMask = new Mat();
-            Cv2.CvtColor(srcCopy, markerMask, ColorConversion.BgrToGray);
+            Cv2.CvtColor(srcCopy, markerMask, ColorConversionCodes.BGRA2GRAY);
 
             var imgGray = new Mat();
-            Cv2.CvtColor(markerMask, imgGray, ColorConversion.GrayToBgr);
+            Cv2.CvtColor(markerMask, imgGray, ColorConversionCodes.GRAY2BGR);
             markerMask = new Mat(markerMask.Size(), markerMask.Type(), s: Scalar.All(0));
 
             var sourceWindow = new Window("Source (Select areas by mouse and then press space)")
@@ -85,13 +84,13 @@ namespace OpenCVSharpSample12
                 if ((char)key == 'w' || (char)key == ' ') // Apply watershed
                 {
                     Point[][] contours; //vector<vector<Point>> contours;
-                    HiearchyIndex[] hierarchyIndexes; //vector<Vec4i> hierarchy;
+                    HierarchyIndex[] hierarchyIndexes; //vector<Vec4i> hierarchy;
                     Cv2.FindContours(
                         markerMask,
                         out contours,
                         out hierarchyIndexes,
-                        mode: ContourRetrieval.CComp,
-                        method: ContourChain.ApproxSimple);
+                        mode: RetrievalModes.CComp,
+                        method: ContourApproximationModes.ApproxSimple);
 
                     if (contours.Length == 0)
                     {
@@ -110,7 +109,7 @@ namespace OpenCVSharpSample12
                             contourIndex,
                             color: Scalar.All(componentCount+1),
                             thickness: -1,
-                            lineType: LineType.Link8,
+                            lineType: LineTypes.Link8,
                             hierarchy: hierarchyIndexes,
                             maxLevel: int.MaxValue);
 

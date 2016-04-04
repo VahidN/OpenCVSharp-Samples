@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
 
 namespace OpenCVSharpSample14
 {
@@ -15,8 +14,8 @@ namespace OpenCVSharpSample14
 
             var binaryImage = new Mat(srcImage.Size(), MatType.CV_8UC1);
 
-            Cv2.CvtColor(srcImage, binaryImage, ColorConversion.BgrToGray);
-            Cv2.Threshold(binaryImage, binaryImage, thresh: 100, maxval: 255, type: ThresholdType.Binary);
+            Cv2.CvtColor(srcImage, binaryImage, ColorConversionCodes.BGRA2GRAY);
+            Cv2.Threshold(binaryImage, binaryImage, thresh: 100, maxval: 255, type: ThresholdTypes.Binary);
 
             var detectorParams = new SimpleBlobDetector.Params
             {
@@ -49,7 +48,7 @@ namespace OpenCVSharpSample14
                 //FilterByColor = true,
                 //BlobColor = 255 // to extract light blobs
             };
-            var simpleBlobDetector = new SimpleBlobDetector(detectorParams);
+            var simpleBlobDetector = SimpleBlobDetector.Create(detectorParams);
             var keyPoints = simpleBlobDetector.Detect(binaryImage);
 
             Console.WriteLine("keyPoints: {0}", keyPoints.Length);

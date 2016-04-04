@@ -189,3 +189,4 @@ _Pvt_Extensions/
 ModelManifest.xml
 /OpenCVSharpSample01/dll
 dll/
+*.scgdat

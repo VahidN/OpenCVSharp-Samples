@@ -1,5 +1,5 @@
-﻿using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
+﻿using System;
+using OpenCvSharp;
 
 namespace OpenCVSharpSample10
 {
@@ -7,7 +7,7 @@ namespace OpenCVSharpSample10
     {
         static void Main(string[] args)
         {
-            using (var src = new Mat(@"..\..\Images\Penguin.Png", LoadMode.AnyDepth | LoadMode.AnyColor))
+            using (var src = new Mat(@"..\..\Images\Penguin.Png", ImreadModes.AnyDepth | ImreadModes.AnyColor))
             {
                 using (var sourceWindow = new Window("Source", image: src,
                        flags: WindowMode.AutoSize | WindowMode.FreeRatio))
@@ -20,7 +20,7 @@ namespace OpenCVSharpSample10
 
                         var brightnessTrackbar = sourceWindow.CreateTrackbar(
                                 name: "Brightness", value: brightness, max: 200,
-                                callback: pos =>
+                                callback: (pos, obj) =>
                                 {
                                     brightness = pos;
                                     updateImageCalculateHistogram(sourceWindow, histogramWindow, src, brightness, contrast);
@@ -28,7 +28,7 @@ namespace OpenCVSharpSample10
 
                         var contrastTrackbar = sourceWindow.CreateTrackbar(
                             name: "Contrast", value: contrast, max: 200,
-                            callback: pos =>
+                            callback: (pos, obj) =>
                             {
                                 contrast = pos;
                                 updateImageCalculateHistogram(sourceWindow, histogramWindow, src, brightness, contrast);
@@ -98,8 +98,8 @@ namespace OpenCVSharpSample10
                 {
                     // Scales and draws histogram
 
-                    Cv2.Normalize(histogram, histogram, 0, histogramImage.Rows, NormType.MinMax);
-                    var binW = Cv.Round((double)histogramImage.Cols / histogramSize);
+                    Cv2.Normalize(histogram, histogram, 0, histogramImage.Rows, NormTypes.MinMax);
+                    var binW = Math.Round((double)histogramImage.Cols / histogramSize, MidpointRounding.ToEven);
 
                     var color = Scalar.All(100);
 
@@ -107,7 +107,7 @@ namespace OpenCVSharpSample10
                     {
                         Cv2.Rectangle(histogramImage,
                             new Point(i * binW, histogramImage.Rows),
-                            new Point((i + 1) * binW, histogramImage.Rows - Cv.Round(histogram.Get<float>(i))),
+                            new Point((i + 1) * binW, histogramImage.Rows - Math.Round(histogram.Get<float>(i), MidpointRounding.ToEven)),
                             color,
                             -1);
                     }

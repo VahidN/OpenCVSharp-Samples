@@ -17,28 +17,45 @@ namespace OpenCVSharpSample06WinForms
             InitializeComponent();
         }
 
-        private static double getFps(CvCapture capture)
+        private static double getFps(VideoCapture capture)
         {
-            while (capture.QueryFrame() == null)
+            using (var image = new Mat())
             {
-                /* start camera */
-            }
-
-            double counter = 0;
-            double seconds = 0;
-            var watch = Stopwatch.StartNew();
-            while (capture.QueryFrame() != null)
-            {
-                counter++;
-                seconds = watch.ElapsedMilliseconds / (double)1000;
-                if (seconds >= 3)
+                while (true)
                 {
-                    watch.Stop();
-                    break;
+                    /* start camera */
+                    capture.Read(image);
+                    if (!image.Empty())
+                    {
+                        break;
+                    }
                 }
             }
-            var fps = counter / seconds;
-            return fps;
+
+            using (var image = new Mat())
+            {
+                double counter = 0;
+                double seconds = 0;
+                var watch = Stopwatch.StartNew();
+                while (true)
+                {
+                    capture.Read(image);
+                    if (image.Empty())
+                    {
+                        break;
+                    }
+
+                    counter++;
+                    seconds = watch.ElapsedMilliseconds / (double)1000;
+                    if (seconds >= 3)
+                    {
+                        watch.Stop();
+                        break;
+                    }
+                }
+                var fps = counter / seconds;
+                return fps;
+            }
         }
 
         private void BtnStart_Click(object sender, System.EventArgs e)
@@ -92,41 +109,53 @@ namespace OpenCVSharpSample06WinForms
 
         private void workerDoReadCamera(object sender, DoWorkEventArgs e)
         {
-            using (var capture = CvCapture.FromCamera(index: 0))
+            using (var capture = new VideoCapture(CaptureDevice.Any, index: 0))
             {
                 var fps = getFps(capture);
-                capture.SetCaptureProperty(CvConst.CV_CAP_PROP_FPS, fps);
+                capture.Fps = fps;
                 var interval = (int)(1000 / fps);
 
-                IplImage image;
-                while ((image = capture.QueryFrame()) != null &&
-                        _worker != null && !_worker.CancellationPending)
+                using (var image = new Mat())
                 {
-                    _worker.ReportProgress(0, image);
-                    Thread.Sleep(interval);
+                    while (_worker != null && !_worker.CancellationPending)
+                    {
+                        capture.Read(image);
+                        if (image.Empty())
+                            break;
+
+                        _worker.ReportProgress(0, image);
+                        Thread.Sleep(interval);
+                    }
                 }
             }
         }
 
         private void workerDoReadVideo(object sender, DoWorkEventArgs e)
         {
-            using (var capture = new CvCapture(@"..\..\Videos\drop.avi"))
+            using (var capture = new VideoCapture(@"..\..\Videos\drop.avi"))
             {
                 var interval = (int)(1000 / capture.Fps);
 
-                IplImage image;
-                while ((image = capture.QueryFrame()) != null &&
-                        _worker != null && !_worker.CancellationPending)
+                using (var image = new Mat())
                 {
-                    _worker.ReportProgress(0, image);
-                    Thread.Sleep(interval);
+                    while (_worker != null && !_worker.CancellationPending)
+                    {
+                        capture.Read(image);
+                        if (image.Empty())
+                        {
+                            break;
+                        }
+
+                        _worker.ReportProgress(0, image);
+                        Thread.Sleep(interval);
+                    }
                 }
             }
         }
 
         private void workerProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            var image = e.UserState as IplImage;
+            var image = e.UserState as Mat;
             if (image == null) return;
 
             //Cv.Not(image, image);

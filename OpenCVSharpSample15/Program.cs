@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenCvSharp;
-using OpenCvSharp.CPlusPlus;
 
 namespace OpenCVSharpSample15
 {
@@ -13,7 +12,7 @@ namespace OpenCVSharpSample15
             Cv2.WaitKey(1); // do events
 
             var grayImage = new Mat();
-            Cv2.CvtColor(srcImage, grayImage, ColorConversion.BgrToGray);
+            Cv2.CvtColor(srcImage, grayImage, ColorConversionCodes.BGRA2GRAY);
             Cv2.EqualizeHist(grayImage, grayImage);
 
             var cascade = new CascadeClassifier(@"..\..\Data\haarcascade_frontalface_alt.xml");
@@ -23,7 +22,7 @@ namespace OpenCVSharpSample15
                 image: grayImage,
                 scaleFactor: 1.1,
                 minNeighbors: 2,
-                flags: HaarDetectionType.Zero | HaarDetectionType.ScaleImage,
+                flags: HaarDetectionType.DoRoughSearch | HaarDetectionType.ScaleImage,
                 minSize: new Size(30, 30)
                 );
 
@@ -42,12 +41,12 @@ namespace OpenCVSharpSample15
 
 
                 var detectedFaceGrayImage = new Mat();
-                Cv2.CvtColor(detectedFaceImage, detectedFaceGrayImage, ColorConversion.BgrToGray);
+                Cv2.CvtColor(detectedFaceImage, detectedFaceGrayImage, ColorConversionCodes.BGRA2GRAY);
                 var nestedObjects = nestedCascade.DetectMultiScale(
                     image: detectedFaceGrayImage,
                     scaleFactor: 1.1,
                     minNeighbors: 2,
-                    flags: HaarDetectionType.Zero | HaarDetectionType.ScaleImage,
+                    flags: HaarDetectionType.DoRoughSearch | HaarDetectionType.ScaleImage,
                     minSize: new Size(30, 30)
                     );
 
@@ -57,11 +56,11 @@ namespace OpenCVSharpSample15
                 {
                     var center = new Point
                     {
-                        X = Cv.Round(nestedObject.X + nestedObject.Width * 0.5) + faceRect.Left,
-                        Y = Cv.Round(nestedObject.Y + nestedObject.Height * 0.5) + faceRect.Top
+                        X = (int)(Math.Round(nestedObject.X + nestedObject.Width * 0.5, MidpointRounding.ToEven) + faceRect.Left),
+                        Y = (int)(Math.Round(nestedObject.Y + nestedObject.Height * 0.5, MidpointRounding.ToEven) + faceRect.Top)
                     };
-                    var radius = Cv.Round((nestedObject.Width + nestedObject.Height) * 0.25);
-                    Cv2.Circle(srcImage, center, radius, color, thickness: 3);
+                    var radius = Math.Round((nestedObject.Width + nestedObject.Height) * 0.25, MidpointRounding.ToEven);
+                    Cv2.Circle(srcImage, center, (int)radius, color, thickness: 3);
                 }
 
                 count++;
