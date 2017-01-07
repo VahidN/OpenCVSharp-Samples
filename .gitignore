@@ -190,3 +190,4 @@ ModelManifest.xml
 /OpenCVSharpSample01/dll
 dll/
 *.scgdat
+.vs
