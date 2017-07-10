@@ -1,10 +1,17 @@
 ﻿using System;
+using OpenCVSharpSample18.KNearestTests;
 
 namespace OpenCVSharpSample18
 {
     internal class Program
     {
         private static void Main(string[] args)
+        {
+            //KNearestSample.RunKNearest();
+            runSimpleOCR();
+        }
+
+        private static void runSimpleOCR()
         {
             var simpleOCR = new SimpleOCR();
 
