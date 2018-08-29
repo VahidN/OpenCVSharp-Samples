@@ -35,7 +35,7 @@ namespace OpenCVSharpSample17
                 }
             }
 
-            var model = FaceRecognizer.CreateFisherFaceRecognizer();
+            var model = FisherFaceRecognizer.Create();
             model.Train(images.Select(x => x.Image), images.Select(x => x.ImageGroupId));
 
             var rnd = new Random();
